@@ -42,7 +42,7 @@ public class LoginFragment extends Fragment {
 
     private LoginViewModel mViewModel;
 
-    public static LoginFragment newInstance() {
+    public static LoginFragment newInstance(    ) {
         return new LoginFragment();
     }
 
