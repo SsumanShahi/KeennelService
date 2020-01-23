@@ -1,6 +1,7 @@
 package com.suman.kennelservice.api;
 
 import com.suman.kennelservice.model.User;
+import com.suman.kennelservice.serverresponse.SignupResponse;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
