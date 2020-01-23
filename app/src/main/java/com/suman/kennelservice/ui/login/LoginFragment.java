@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.suman.kennelservice.BLL.LoginBLL;
 import com.suman.kennelservice.NavActivity;
 import com.suman.kennelservice.R;
@@ -33,8 +35,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginFragment extends Fragment {
-    EditText etusername, etpassword;
-    ImageView profileimg;
+    private EditText ettusername, ettpassword;
+    ImageView profileimage;
     Button btnlogin;
     TextView reg;
 
@@ -49,9 +51,9 @@ public class LoginFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_fragment, container, false);
 
-        etusername = view.findViewById(R.id.etusername);
-        etpassword = view.findViewById(R.id.etpassword);
-        profileimg = view.findViewById(R.id.profileimg);
+        ettusername = view.findViewById(R.id.ettusername);
+        ettpassword = view.findViewById(R.id.ettpassword);
+        profileimage = view.findViewById(R.id.profileimage);
         btnlogin = view.findViewById(R.id.btnlogin);
         reg = view.findViewById(R.id.reg);
 
@@ -72,8 +74,8 @@ public class LoginFragment extends Fragment {
     }
 
     private void login() {
-        String username = etusername.getText().toString();
-        String password = etpassword.getText().toString();
+        String username = ettusername.getText().toString();
+        String password = ettpassword.getText().toString();
 
 
         LoginBLL loginBLL = new LoginBLL();

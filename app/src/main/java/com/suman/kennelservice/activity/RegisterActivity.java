@@ -12,13 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.suman.kennelservice.R;
 import com.suman.kennelservice.ui.login.LoginFragment;
 
 public class RegisterActivity extends AppCompatActivity {
 
     ImageView profileimg;
-    EditText etfname, etlname, etaddress, etphone, etemail, etusername, etpassword, etcmpassword;
+    private TextInputLayout etfname, etlname, etaddress, etphone, etemail, etusername, etpassword, etcmpassword;
     Button btnreg;
     TextView txtlog;
 
