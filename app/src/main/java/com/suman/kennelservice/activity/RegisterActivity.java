@@ -17,10 +17,18 @@ import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
 import com.suman.kennelservice.api.Userapi;
 import com.suman.kennelservice.model.User;
+import com.suman.kennelservice.serverresponse.ImageResponse;
 import com.suman.kennelservice.serverresponse.SignupResponse;
+import com.suman.kennelservice.strictmode.StrictModeClass;
 import com.suman.kennelservice.ui.login.LoginFragment;
 
+import java.io.File;
+import java.io.IOException;
+
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -119,6 +127,29 @@ public class RegisterActivity extends AppCompatActivity {
 //            }
 //        });
 
+    }
+
+    private void saveImageOnly() {
+        File file = new File(imagePath);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"),file);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("image",
+                file.getName(),requestBody);
+
+        Userapi userapi = url.getInstance().create(Userapi.class);
+        Call<ImageResponse> responseBodyCall = userapi.uploadImage(body);
+
+        StrictModeClass.StrictMode();
+        //Synchronomus method
+
+        try{
+            Response<ImageResponse> imageResponseResponse = responseBodyCall.execute();
+            imageName = imageResponseResponse.body().getFilename();
+            Toast.makeText(this, "Image Inserted", Toast.LENGTH_LONG).show();
+        }catch (IOException e)
+        {
+            Toast.makeText(this, "Error"+e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
     }
 
     private boolean validate() {
