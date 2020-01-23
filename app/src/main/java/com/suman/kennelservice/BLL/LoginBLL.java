@@ -2,6 +2,7 @@ package com.suman.kennelservice.BLL;
 
 import com.suman.kennelservice.Url.url;
 import com.suman.kennelservice.api.Userapi;
+import com.suman.kennelservice.model.Userlogin;
 import com.suman.kennelservice.serverresponse.SignupResponse;
 
 import java.io.IOException;
@@ -15,16 +16,16 @@ public class LoginBLL {
 
     public boolean checkUser(String username, String password) {
 
+        Userlogin userlogin = new Userlogin(username,password);
         Userapi userapi = url.getInstance().create(Userapi.class);
-        Call<SignupResponse> usersCall = userapi.checkUser(username, password);
+        Call<SignupResponse> usercall = userapi.checklogin(userlogin);
 
         try {
-            Response<SignupResponse> loginResponse = usersCall.execute();
-            if (loginResponse.isSuccessful() &&
-                    loginResponse.body().getStatus().equals("Login success!")) {
-
+            Response<SignupResponse> loginResponse = usercall.execute();
+            if (loginResponse.isSuccessful()
+                    && loginResponse.body().getStatus().equals("Login Successfull")){
                 url.token += loginResponse.body().getToken();
-                // Url.Cookie = imageResponseResponse.headers().get("Set-Cookie");
+//                url.Cookie = imageResponseResponse.headers().get("Set=Cookie");
                 isSuccess = true;
             }
         } catch (IOException e) {
