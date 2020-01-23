@@ -1,13 +1,14 @@
-package com.suman.kennelservice;
+package com.suman.kennelservice.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
-import android.widget.Toast;
+
+import com.suman.kennelservice.NavActivity;
+import com.suman.kennelservice.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -45,7 +46,7 @@ public class SplashActivity extends AppCompatActivity {
 //                    finish();
 //                }
 ////
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this, NavActivity.class);
                 startActivity(intent);
                 finish();//close the activity
             }

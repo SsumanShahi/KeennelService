@@ -1,8 +1,10 @@
-package com.suman.kennelservice;
+package com.suman.kennelservice.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.suman.kennelservice.R;
 
 public class Dashboard extends AppCompatActivity {
 
