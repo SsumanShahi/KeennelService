@@ -121,7 +121,15 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-
+    private boolean validate() {
+        boolean status = true;
+        if(etusername.getEditText().toString().length()<6)
+        {
+            etusername.setError("minimum 6 character");
+            status=false;
+        }
+        return status;
+    }
 
     private void browseimage() {
     }
