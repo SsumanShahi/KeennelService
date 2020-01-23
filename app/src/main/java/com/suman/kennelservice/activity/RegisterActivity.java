@@ -13,11 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.suman.kennelservice.R;
+import com.suman.kennelservice.ui.login.LoginFragment;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    ImageView img;
-    EditText username, password, cmpassword;
+    ImageView profileimg;
+    EditText etfname, etlname, etaddress, etphone, etemail, etusername, etpassword, etcmpassword;
     Button btnreg;
     TextView txtlog;
 
@@ -25,17 +26,22 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        img = findViewById(R.id.img);
-        username=findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        cmpassword=findViewById(R.id.cmpassword);
+        profileimg = findViewById(R.id.profileimg);
+        etfname = findViewById(R.id.etfname);
+        etlname = findViewById(R.id.etlname);
+        etaddress = findViewById(R.id.etaddress);
+        etphone = findViewById(R.id.etphone);
+        etemail = findViewById(R.id.etemail);
+        etusername=findViewById(R.id.etusername);
+        etpassword = findViewById(R.id.etpassword);
+        etcmpassword=findViewById(R.id.etcmpassword);
         btnreg=findViewById(R.id.btnreg);
         txtlog=findViewById(R.id.txtlog);
 
         txtlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent logintent = new Intent(RegisterActivity.this, MainActivity.class);
+                Intent logintent = new Intent(RegisterActivity.this, LoginFragment.class);
                 startActivity(logintent);
             }
         });
@@ -78,14 +84,14 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void signup() {
 
-        SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString("user",username.getText().toString());
-        editor.putString("pwd",password.getText().toString());
-        editor.commit();
-
-
-        Toast.makeText(this, "Successfully Registered", Toast.LENGTH_SHORT).show();
+//        SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//
+//        editor.putString("user",username.getText().toString());
+//        editor.putString("pwd",password.getText().toString());
+//        editor.commit();
+//
+//
+//        Toast.makeText(this, "Successfully Registered", Toast.LENGTH_SHORT).show();
     }
 }

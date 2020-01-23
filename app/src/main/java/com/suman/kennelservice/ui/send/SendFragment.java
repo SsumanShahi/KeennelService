@@ -32,10 +32,7 @@ import retrofit2.Response;
 import retrofit2.http.GET;
 
 public class SendFragment extends Fragment {
-    EditText etusername, etpassword;
-    ImageView profileimg;
-    Button btnlogin;
-    TextView reg;
+
 
     private SendViewModel sendViewModel;
 
@@ -51,51 +48,12 @@ public class SendFragment extends Fragment {
 //                textView.setText(s);
 //            }
 //        });
-        etusername = view.findViewById(R.id.etusername);
-        etpassword = view.findViewById(R.id.etpassword);
-        profileimg = view.findViewById(R.id.profileimg);
-        btnlogin = view.findViewById(R.id.btnlogin);
-        reg = view.findViewById(R.id.reg);
 
-        btnlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
         return view;
     }
 
     private void login() {
 
-        String username = etusername.getText().toString();
-        String password = etpassword.getText().toString();
 
-
-        LoginBLL loginBLL = new LoginBLL();
-        Userlogin userlogin = new Userlogin(username, password);
-
-        StrictModeClass.StrictMode();
-        Userapi userapi = url.getInstance().create(Userapi.class);
-        Call<SignupResponse> userCall = userapi.checklogin(userlogin);
-        userCall.enqueue(new Callback<SignupResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<SignupResponse> call,@NonNull Response<SignupResponse> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(getActivity(), "Code" + response.code(), Toast.LENGTH_LONG).show();
-                    return;
-                }
-                Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_LONG).show();
-                url.token += response.body().getToken();
-                Intent intent = new Intent(getContext(), NavActivity.class);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<SignupResponse> call,@NonNull Throwable t) {
-                Toast.makeText(getActivity(), "error is = " + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-
-            }
-        });
     }
 }

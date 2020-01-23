@@ -3,39 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="@color/colorPrimaryDark"
-    tools:context=".ui.login.loginFragment">
+    tools:context=".ui.login.LoginFragment">
 
     <ImageView
         android:id="@+id/profileimg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-
         android:src="@drawable/dog" />
 
-
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etusername"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="sans-serif-light"
-        android:hint="username"
-        android:textColor="@color/textbackgroung"
-        android:textSize="30dp" />
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif-light"
+            android:hint="username"
+            android:textColor="@color/textbackgroung"
+            android:textSize="30dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/etpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif-light"
-        android:hint="password"
-        android:textColor="@color/textbackgroung"
-        android:textSize="30dp" />
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:hint="password"
+            android:textColor="@color/textbackgroung"
+            android:textSize="30dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnlogin"
