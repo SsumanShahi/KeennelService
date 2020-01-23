@@ -41,7 +41,7 @@ import retrofit2.Response;
 public class RegisterActivity extends AppCompatActivity {
 
     CircleImageView profileimg;
-    private TextInputLayout etfname, etlname, etaddress, etphone, etemail, etusername, etpassword, etcmpassword;
+    private EditText etcmpassword, etpassword, etfname, etlname, etaddress, etphone, etemail, etusername;;
     private Button btnreg;
     private TextView txtlog;
     private String imagePath;
@@ -82,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etpassword.getEditText().toString().equals((etcmpassword.getEditText().toString()))){
+                if(etpassword.getText().toString().equals((etcmpassword.getText().toString()))){
                     if(validate()){
                         saveImageOnly();
                         signup();
@@ -159,7 +159,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean validate() {
         boolean status = true;
-        if(etusername.getEditText().toString().length()<6)
+        if(etusername.getText().toString().length()<6)
         {
             etusername.setError("minimum 6 character");
             status=false;
@@ -175,13 +175,13 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void signup() {
 
-        String fname = etfname.getEditText().toString();
-        String lname = etlname.getEditText().toString();
-        String address = etaddress.getEditText().toString();
-        String phone = etphone.getEditText().toString();
-        String email = etemail.getEditText().toString();
-        String username = etusername.getEditText().toString();
-        String password = etpassword.getEditText().toString();
+        String fname = etfname.getText().toString();
+        String lname = etlname.getText().toString();
+        String address = etaddress.getText().toString();
+        String phone = etphone.getText().toString();
+        String email = etemail.getText().toString();
+        String username = etusername.getText().toString();
+        String password = etpassword.getText().toString();
 
         User user = new User(fname,lname,address,phone,email,username,password,imageName);
 
