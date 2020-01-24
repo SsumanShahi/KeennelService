@@ -1,12 +1,15 @@
 package com.suman.kennelservice.ui.gallery;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
+import com.suman.kennelservice.activity.RegisterActivity;
 import com.suman.kennelservice.adaptar.Dogbreedadaptar;
 import com.suman.kennelservice.api.DogBreedapi;
 import com.suman.kennelservice.model.Dogbreeds;
@@ -36,7 +40,8 @@ import retrofit2.Response;
 public class GalleryFragment extends Fragment {
 
     RecyclerView recycledogbreed;
-    ImageView card1;
+   private ImageView card1;
+   private TextView tvdogname,tvdogdescription;
 
     //Adaptar
     Dogbreedadaptar dogbreedadaptar;
@@ -61,7 +66,18 @@ public class GalleryFragment extends Fragment {
 
         recycledogbreed = root.findViewById(R.id.recycledogbreed);
         card1 = root.findViewById(R.id.card1);
+        tvdogname = root.findViewById(R.id.tvdogname);
+        tvdogdescription = root.findViewById(R.id.tvdogdescription);
 
+//
+//        card1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                tvdogname.getText().toString();
+////                tvdogdescription.getText().toString();
+//                startActivity(new Intent(getActivity(), DogbreeddetailsFragment.class));
+//            }
+//        });
         dogbreedsList = new ArrayList<>();
 
         DogBreedapi dogBreedapi = url.getInstance().create(DogBreedapi.class);

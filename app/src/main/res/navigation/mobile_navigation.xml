@@ -46,4 +46,10 @@
         android:name="com.suman.kennelservice.ui.login.LoginFragment"
         android:label="@string/menu_Login"
         tools:layout="@layout/login_fragment" />
+
+    <fragment
+        android:id="@+id/nav_dogdetail"
+        android:name="com.suman.kennelservice.ui.gallery.DogbreeddetailsFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/dogbreeddetails_fragment" />
 </navigation>
