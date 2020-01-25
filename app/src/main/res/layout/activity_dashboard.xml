@@ -9,13 +9,6 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".activity.Dashboard">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-android:gravity="center_horizontal"
-        android:textSize="50dp"
-        android:textColor="@color/textbackgroung"
-        android:text="Hello world"
-        android:layout_marginTop="300dp"/>
+
 
 </LinearLayout>

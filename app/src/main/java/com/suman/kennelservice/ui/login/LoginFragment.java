@@ -24,6 +24,7 @@ import com.suman.kennelservice.BLL.LoginBLL;
 import com.suman.kennelservice.NavActivity;
 import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
+import com.suman.kennelservice.activity.ProfileActivity;
 import com.suman.kennelservice.activity.RegisterActivity;
 import com.suman.kennelservice.api.Userapi;
 import com.suman.kennelservice.model.Userlogin;
@@ -93,7 +94,7 @@ public class LoginFragment extends Fragment {
                 }
                 Toast.makeText(getContext(), "Login Successful", Toast.LENGTH_LONG).show();
                 url.token += response.body().getToken();
-                Intent intent = new Intent(getContext(), NavActivity.class);
+                Intent intent = new Intent(getContext(), ProfileActivity.class);
                 startActivity(intent);
             }
 
