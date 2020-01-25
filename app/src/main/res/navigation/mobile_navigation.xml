@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.suman.kennelservice.ui.gallery.GalleryFragment"
+        android:name="com.suman.kennelservice.ui.gallery.BreedsFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
@@ -37,15 +37,15 @@
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.suman.kennelservice.ui.send.SendFragment"
+        android:name="com.suman.kennelservice.ui.DogRegister.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
 
     <fragment
-        android:id="@+id/nav_login"
-        android:name="com.suman.kennelservice.ui.login.LoginFragment"
-        android:label="@string/menu_Login"
-        tools:layout="@layout/login_fragment" />
+        android:id="@+id/nav_profile"
+        android:name="com.suman.kennelservice.ui.MyProfile.ProfileFragment"
+        android:label="@string/menu_Profile"
+        tools:layout="@layout/profile_fragment" />
 
     <fragment
         android:id="@+id/nav_dogdetail"

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.content.CursorLoader;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,11 +12,9 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputLayout;
 import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
 import com.suman.kennelservice.api.Userapi;
@@ -25,7 +22,7 @@ import com.suman.kennelservice.model.User;
 import com.suman.kennelservice.serverresponse.ImageResponse;
 import com.suman.kennelservice.serverresponse.SignupResponse;
 import com.suman.kennelservice.strictmode.StrictModeClass;
-import com.suman.kennelservice.ui.login.LoginFragment;
+import com.suman.kennelservice.ui.MyProfile.ProfileFragment;
 
 import java.io.File;
 import java.io.IOException;
@@ -66,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent logintent = new Intent(RegisterActivity.this, LoginFragment.class);
+                Intent logintent = new Intent(RegisterActivity.this, ProfileFragment.class);
                 startActivity(logintent);
             }
         });
@@ -198,7 +195,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(RegisterActivity.this, LoginFragment.class);
+                Intent intent = new Intent(RegisterActivity.this, ProfileFragment.class);
                 startActivity(intent);
             }
 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.DogBreedDetailActivity">
+
+
+
+    <ImageView
+        android:id="@+id/card1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/dog1" />
+
+
+    <TextView
+        android:id="@+id/tvdogname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="24dp"
+        android:text="Dog Name"
+        android:textSize="10dp" />
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tvdogtype"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_below="@+id/card1"-->
+    <!--            android:layout_marginLeft="70dp"-->
+    <!--            android:layout_marginTop="5dp"-->
+    <!--            android:text="Type"-->
+    <!--            android:textSize="11dp" />-->
+
+    <TextView
+        android:id="@+id/tvdogdescription"
+        android:textSize="9dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/card1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20sp"
+        android:layout_marginTop="50dp"
+        android:text="Address" />
+</LinearLayout>

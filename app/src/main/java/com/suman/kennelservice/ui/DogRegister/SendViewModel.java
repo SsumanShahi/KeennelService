@@ -1,16 +1,16 @@
-package com.suman.kennelservice.ui.gallery;
+package com.suman.kennelservice.ui.DogRegister;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class SendViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public SendViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is send fragment");
     }
 
     public LiveData<String> getText() {

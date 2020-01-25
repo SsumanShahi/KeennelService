@@ -1,13 +1,11 @@
 package com.suman.kennelservice.ui.gallery;
 
-import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,10 +16,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
 import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
-import com.suman.kennelservice.activity.RegisterActivity;
 import com.suman.kennelservice.adaptar.Dogbreedadaptar;
 import com.suman.kennelservice.api.DogBreedapi;
 import com.suman.kennelservice.model.Dogbreeds;
@@ -37,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GalleryFragment extends Fragment {
+public class BreedsFragment extends Fragment {
 
     RecyclerView recycledogbreed;
    private ImageView card1;
@@ -49,12 +45,12 @@ public class GalleryFragment extends Fragment {
     //List of array
     List<Dogbreeds> dogbreedsList;
 
-    private GalleryViewModel galleryViewModel;
+    private BreedsViewModel galleryViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
+                ViewModelProviders.of(this).get(BreedsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
 //        final TextView textView = root.findViewById(R.id.text_gallery);
 //        galleryViewModel.getText().observe(this, new Observer<String>() {

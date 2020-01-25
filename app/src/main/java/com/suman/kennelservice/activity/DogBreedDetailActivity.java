@@ -1,4 +1,4 @@
-package com.suman.kennelservice;
+package com.suman.kennelservice.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,25 +8,24 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.suman.kennelservice.R;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Main2Activity extends AppCompatActivity {
-
+public class DogBreedDetailActivity extends AppCompatActivity {
     private ImageView card1;
     private TextView tvdogname,tvdogdescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-
-
+        setContentView(R.layout.activity_dog_breed_detail);
         card1 = findViewById(R.id.card1);
         tvdogname = findViewById(R.id.tvdogname);
         tvdogdescription = findViewById(R.id.tvdogdescription);
+
 
         String dogName = getIntent().getStringExtra("DogName");
         URL url = null;
@@ -41,5 +40,6 @@ public class Main2Activity extends AppCompatActivity {
 
 
         Log.d("Main2Activity","This is dog name "+dogName);
+
     }
 }

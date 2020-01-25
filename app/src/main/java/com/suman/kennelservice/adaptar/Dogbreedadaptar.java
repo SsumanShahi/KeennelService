@@ -12,12 +12,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.suman.kennelservice.Main2Activity;
 import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
+import com.suman.kennelservice.activity.DogBreedDetailActivity;
 import com.suman.kennelservice.model.Dogbreeds;
 import com.suman.kennelservice.strictmode.StrictModeClass;
-import com.suman.kennelservice.ui.gallery.DogbreeddetailsFragment;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -56,7 +55,7 @@ public class Dogbreedadaptar extends RecyclerView.Adapter<Dogbreedadaptar.dogbre
             holder.card1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(mcontext, Main2Activity.class);
+                    Intent intent = new Intent(mcontext, DogBreedDetailActivity.class);
                     intent.putExtra("ImageUrl",imgPath);
                     intent.putExtra("DogName",dogbreeds1.getName());
                     intent.putExtra("DogDescription",dogbreeds1.getDescription());

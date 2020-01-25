@@ -1,10 +1,16 @@
-package com.suman.kennelservice.activity;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.suman.kennelservice.ui.MyProfile;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.squareup.picasso.Picasso;
 import com.suman.kennelservice.R;
@@ -17,30 +23,36 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileFragment extends Fragment {
     CircleImageView profileimg1;
     private TextView tvfname, tvlname, tvaddress, tvphone, tvemail, tvusername;
-    User user;
+
+
+    private ProfileViewModel mViewModel;
+
+    public static ProfileFragment newInstance() {
+        return new ProfileFragment();
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-
-        profileimg1 = findViewById(R.id.profileimg1);
-        tvfname = findViewById(R.id.tvfname);
-        tvlname = findViewById(R.id.tvlname);
-        tvaddress = findViewById(R.id.tvaddress);
-        tvphone = findViewById(R.id.tvphone);
-        tvemail = findViewById(R.id.tvemail);
-        tvusername = findViewById(R.id.tvusername);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.profile_fragment, container, false);
+        profileimg1 = view.findViewById(R.id.profileimg1);
+        tvfname = view.findViewById(R.id.tvfname);
+        tvlname = view.findViewById(R.id.tvlname);
+        tvaddress = view.findViewById(R.id.tvaddress);
+        tvphone = view.findViewById(R.id.tvphone);
+        tvemail = view.findViewById(R.id.tvemail);
+        tvusername = view.findViewById(R.id.tvusername);
 
         loadcurrentuser();
+
+
+        return view;
     }
 
     private void loadcurrentuser() {
-
-
         Userapi userapi = url.getInstance().create(Userapi.class);
         Call<User> userCall = userapi.getUserDetails(url.token);
 
@@ -48,10 +60,10 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(ProfileActivity.this, "Code " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Code " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String imgPath = url.imagePath +  response.body().getImage();
+                String imgPath = url.imagePath + response.body().getImage();
 //                tvfname.setText(user.getFirstName());
 //                tvlname.setText(user.getLastName());
 //                tvaddress.setText(user.getAddress());
@@ -73,9 +85,21 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<User> call, Throwable t) {
 
-                Toast.makeText(ProfileActivity.this, "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error " + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
+
 
         });
     }
+
+
+
+        @Override
+        public void onActivityCreated (@Nullable Bundle savedInstanceState){
+            super.onActivityCreated(savedInstanceState);
+            mViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+            // TODO: Use the ViewModel
+        }
+
+
 }
