@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="16dp"
+
     android:background="@color/colorPrimaryDark"
     tools:context=".ui.MyProfile.ProfileFragment">
 
@@ -76,5 +77,17 @@
         android:hint="Username"
         android:textColor="@color/textbackgroung"
         android:textSize="30dp"/>
+
+    <Button
+        android:id="@+id/btneditprofie"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="#FF9100"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="sans-serif-medium"
+        android:text="Edit"
+        android:textSize="20dp" />
+
 
 </LinearLayout>

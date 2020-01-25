@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.suman.kennelservice.ui.DogRegister.SendFragment"
+        android:name="com.suman.kennelservice.ui.DogRegister.DogRegisterFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
 

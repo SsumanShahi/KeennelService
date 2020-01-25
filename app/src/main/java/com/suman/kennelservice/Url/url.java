@@ -10,6 +10,7 @@ public class url {
 
     public static String token="Bearer ";
     public static String imagePath= Base_Url+"uploads/";
+    public static String Cookie="";
 
     public static Retrofit getInstance()
     {

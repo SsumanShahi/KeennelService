@@ -1,9 +1,12 @@
 package com.suman.kennelservice.ui.MyProfile;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +18,9 @@ import androidx.lifecycle.ViewModelProviders;
 import com.squareup.picasso.Picasso;
 import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
+import com.suman.kennelservice.activity.EditProfileActivity;
+import com.suman.kennelservice.activity.LoginActivity;
+import com.suman.kennelservice.activity.RegisterActivity;
 import com.suman.kennelservice.api.Userapi;
 import com.suman.kennelservice.model.User;
 
@@ -26,6 +32,8 @@ import retrofit2.Response;
 public class ProfileFragment extends Fragment {
     CircleImageView profileimg1;
     private TextView tvfname, tvlname, tvaddress, tvphone, tvemail, tvusername;
+    Button btneditprofie;
+    User user;
 
 
     private ProfileViewModel mViewModel;
@@ -45,6 +53,19 @@ public class ProfileFragment extends Fragment {
         tvphone = view.findViewById(R.id.tvphone);
         tvemail = view.findViewById(R.id.tvemail);
         tvusername = view.findViewById(R.id.tvusername);
+        btneditprofie = view.findViewById(R.id.btneditprofie);
+        user=new User();
+
+
+
+        btneditprofie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = (new Intent(getContext(), EditProfileActivity.class));
+                intent.putExtra("User",user);
+                startActivity(intent);
+            }
+        });
 
         loadcurrentuser();
 
@@ -58,19 +79,33 @@ public class ProfileFragment extends Fragment {
 
         userCall.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(@NonNull Call<User> call,@NonNull Response<User> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(getContext(), "Code " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String imgPath = url.imagePath + response.body().getImage();
-//                tvfname.setText(user.getFirstName());
-//                tvlname.setText(user.getLastName());
-//                tvaddress.setText(user.getAddress());
-//                tvemail.setText(user.getEmail());
-//                tvphone.setText(user.getPhoneNumber());
-//                tvusername.setText(user.getUsername());
-                Picasso.get().load(imgPath).into(profileimg1);
+                user= response.body();
+
+                if (response.body() != null) {
+
+                    String imgPath = null;
+                    imgPath = url.imagePath + response.body().getImage();
+                    Picasso.get().load(imgPath).into(profileimg1);
+//                    Log.d("ProfileFragment","the first name "+response.body().getImage());
+//                    Log.d("ProfileFragment","the first name "+response.body());
+//                    Log.d("ProfileFragment","the first name "+response.body().getLastName());
+//                    Log.d("ProfileFragment","the first name "+response.body().getAddress());
+//                    Log.d("ProfileFragment","the first name "+response.body().getEmail());
+//                    Log.d("ProfileFragment","the first name "+response.body().getPhoneNumber());
+                }
+
+                tvfname.setText(response.body().getFirstName());
+                tvlname.setText(response.body().getLastName());
+                tvaddress.setText(response.body().getAddress());
+                tvemail.setText(response.body().getEmail());
+                tvphone.setText(response.body().getPhoneNumber());
+                tvusername.setText(response.body().getUsername());
+
 
 
 //                StrictModeClass.StrictMode();

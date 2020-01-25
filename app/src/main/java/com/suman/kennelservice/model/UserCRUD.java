@@ -1,31 +1,24 @@
 package com.suman.kennelservice.model;
 
-import java.io.Serializable;
-
-public class User implements Serializable {
+public class UserCRUD {
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
     private String address;
     private String username;
-    private String password;
     private String image;
 
-    public User(String firstName, String lastName, String email, String phoneNumber, String address, String username, String password, String image) {
+    public UserCRUD(String firstName, String lastName, String email, String phoneNumber, String address, String username, String image) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.username = username;
-        this.password = password;
         this.image = image;
     }
 
-    public User() {
-
-    }
 
     public String getFirstName() {
         return firstName;
@@ -73,14 +66,6 @@ public class User implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getImage() {
