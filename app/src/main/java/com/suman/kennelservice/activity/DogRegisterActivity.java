@@ -101,7 +101,7 @@ public class DogRegisterActivity extends AppCompatActivity {
                 }
                 Toast.makeText(DogRegisterActivity.this, "Registered", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(DogRegisterActivity.this, ProfileFragment.class);
+                Intent intent = new Intent(DogRegisterActivity.this, DogListActivity.class);
                 startActivity(intent);
             }
 

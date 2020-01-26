@@ -1,11 +1,9 @@
 package com.suman.kennelservice.api;
 
-import com.suman.kennelservice.model.Dogbreeds;
 import com.suman.kennelservice.model.MyDog;
-import com.suman.kennelservice.model.User;
-import com.suman.kennelservice.model.Userlogin;
 import com.suman.kennelservice.serverresponse.ImageResponse;
-import com.suman.kennelservice.serverresponse.SignupResponse;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -30,5 +28,8 @@ public interface MyDogsapi {
 //    Call<Dogbreeds> getDog(@Header("Authorization") String token);
     @GET("dogregister")
     Call<Void> getDog(@Body MyDog myDog);
+
+    @GET("dogregister")
+    Call<List<MyDog>> getMydog(@Header("Authorization")String token);
 
 }
