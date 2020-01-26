@@ -36,10 +36,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getSupportActionBar().hide();
+
 
         ettusername = findViewById(R.id.ettusername);
         ettpassword = findViewById(R.id.ettpassword);
-        profileimage = findViewById(R.id.profileimage);
         btnlogin = findViewById(R.id.btnlogin);
         reg = findViewById(R.id.reg);
         reg.setOnClickListener(new View.OnClickListener() {
