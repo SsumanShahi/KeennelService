@@ -62,5 +62,30 @@ private TextView tvDogName,tvDogBreed;
             }
         });
 
+
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyDogsapi myDogsapi = url.getInstance().create(MyDogsapi.class);
+                Call<MyDogCRUD> myDogCRUDCall = myDogsapi.deleteMyDog(url.token,myDog.getId());
+                myDogCRUDCall.enqueue(new Callback<MyDogCRUD>() {
+                    @Override
+                    public void onResponse(Call<MyDogCRUD> call, Response<MyDogCRUD> response) {
+                        if (!response.isSuccessful()) {
+                            Toast.makeText(DogDetailActivity.this, "Code Error" + response.code(), Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        startActivity(new Intent(getApplicationContext(),DogListActivity.class));
+                    }
+
+                    @Override
+                    public void onFailure(Call<MyDogCRUD> call, Throwable t) {
+
+                    }
+                });
+
+            }
+        });
+
     }
 }
