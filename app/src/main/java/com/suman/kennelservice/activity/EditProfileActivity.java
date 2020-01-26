@@ -1,11 +1,17 @@
 package com.suman.kennelservice.activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.loader.content.CursorLoader;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +32,8 @@ import com.suman.kennelservice.ui.MyProfile.ProfileFragment;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
@@ -57,6 +65,7 @@ public class EditProfileActivity extends AppCompatActivity {
         etemail = findViewById(R.id.etemail);
         etusername=findViewById(R.id.etusername);
         btnupdate=findViewById(R.id.btnupdate);
+        user = new User();
         user= (User) getIntent().getSerializableExtra("User");
         Log.d("Edit profile","phone number is ="+user.getPhoneNumber());
 
@@ -66,54 +75,29 @@ public class EditProfileActivity extends AppCompatActivity {
         etphone.setText(user.getPhoneNumber());
         etemail.setText(user.getEmail());
         etusername.setText(user.getUsername());
+        final String imgPath = url.imagePath + user.getImage();
+        try {
+            URL url = new URL(imgPath);
+            profileimg.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-//        profileimg.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                browseimage();
-//            }
-//        });
+        profileimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                browseimage();
+            }
+        });
 
         btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-/*
                 saveImageOnly();
-*/
                 profileupdate();
             }
         });
     }
-
-//    private void saveImageOnly() {
-//        File file = new File(imagePath);
-//        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"),file);
-//        MultipartBody.Part body = MultipartBody.Part.createFormData("myFile",
-//                file.getName(),requestBody);
-//
-//        Userapi userapi = url.getInstance().create(Userapi.class);
-//        Call<ImageResponse> responseBodyCall = userapi.uploadImage(body);
-//
-//        StrictModeClass.StrictMode();
-//        //Synchronomus method
-//
-//        try{
-//            Response<ImageResponse> imageResponseResponse = responseBodyCall.execute();
-//            imageName = imageResponseResponse.body().getFilename();
-//            Toast.makeText(this, "Image Inserted", Toast.LENGTH_LONG).show();
-//        }catch (IOException e)
-//        {
-//            Toast.makeText(this, "Error"+e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-//            e.printStackTrace();
-//        }
-//    }
-
-//    private void browseimage() {
-//        Intent intent = new Intent(Intent.ACTION_PICK);
-//        intent.setType("image/*");
-//        startActivityForResult(intent,0);
-//    }
-
 
     private void profileupdate() {
         String fname = etfname.getText().toString();
@@ -157,4 +141,63 @@ public class EditProfileActivity extends AppCompatActivity {
         });
 
     }
+
+    private void saveImageOnly() {
+        File file = new File(imagePath);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"),file);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("myFile",
+                file.getName(),requestBody);
+
+        Userapi userapi = url.getInstance().create(Userapi.class);
+        Call<ImageResponse> responseBodyCall = userapi.uploadImage(body);
+
+        StrictModeClass.StrictMode();
+        //Synchronomus method
+
+        try{
+            Response<ImageResponse> imageResponseResponse = responseBodyCall.execute();
+            imageName = imageResponseResponse.body().getFilename();
+            Toast.makeText(this, "Image Inserted", Toast.LENGTH_LONG).show();
+        }catch (IOException e)
+        {
+            Toast.makeText(this, "Error"+e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+    }
+
+    private void browseimage() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent,0);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            if(data == null)
+            {
+                Toast.makeText(this, "Please select an image", Toast.LENGTH_LONG).show();
+            }
+        }
+
+        Uri uri = data.getData();
+        profileimg.setImageURI(uri);
+        imagePath = getRealPathFromUri(uri);
+    }
+
+    private String getRealPathFromUri(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        CursorLoader loader = new CursorLoader(getApplicationContext(),uri,projection, null
+                ,null,null);
+        Cursor cursor = loader.loadInBackground();
+        int colIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(colIndex);
+        cursor.close();
+        return result;
+    }
+
+
+
 }

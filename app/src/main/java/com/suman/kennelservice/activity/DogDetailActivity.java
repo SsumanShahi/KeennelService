@@ -80,6 +80,7 @@ private TextView tvDogName,tvDogBreed;
 
                     @Override
                     public void onFailure(Call<MyDogCRUD> call, Throwable t) {
+                        Toast.makeText(DogDetailActivity.this, "Something went wrong!! Please Try Again Later!!" , Toast.LENGTH_LONG).show();
 
                     }
                 });
