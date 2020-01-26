@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
 import com.suman.kennelservice.activity.DogBreedDetailActivity;
+import com.suman.kennelservice.activity.DogDetailActivity;
 import com.suman.kennelservice.model.MyDog;
 import com.suman.kennelservice.strictmode.StrictModeClass;
 
@@ -54,11 +55,9 @@ public class DogListAdaptar extends RecyclerView.Adapter<DogListAdaptar.DogListV
             holder.ivDog.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                 /*   Intent intent = new Intent(mcontext, DogBreedDetailActivity.class);
-                    intent.putExtra("ImageUrl", imgPath);
-                    intent.putExtra("DogName", myDog.getPetName());
-                    intent.putExtra("DogDescription", myDog.getBreed());
-                    mcontext.startActivity(intent);*/
+                    Intent intent = new Intent(mcontext, DogDetailActivity.class);
+                    intent.putExtra("DogDetail", myDog);
+                    mcontext.startActivity(intent);
                 }
             });
         } catch (IOException e) {

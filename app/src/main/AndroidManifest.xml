@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.DogDetailActivity"></activity>
+        <activity android:name=".activity.EditDogDetailsActivity"></activity>
+        <activity android:name=".activity.DogDetailActivity" />
         <activity android:name=".activity.DogListActivity" />
         <activity android:name=".activity.EditProfileActivity" />
         <activity android:name=".activity.DogRegisterActivity" />

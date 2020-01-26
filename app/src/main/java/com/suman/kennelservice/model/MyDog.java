@@ -1,6 +1,8 @@
 package com.suman.kennelservice.model;
 
-public class MyDog {
+import java.io.Serializable;
+
+public class MyDog implements Serializable {
     private String petName;
     private String petType;
     private String Breed;
