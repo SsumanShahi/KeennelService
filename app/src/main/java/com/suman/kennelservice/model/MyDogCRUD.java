@@ -2,7 +2,8 @@ package com.suman.kennelservice.model;
 
 import java.io.Serializable;
 
-public class MyDog implements Serializable {
+public class MyDogCRUD implements Serializable {
+    private String _id;
     private String petName;
     private String petType;
     private String Breed;
@@ -12,7 +13,7 @@ public class MyDog implements Serializable {
     private String petvaccination;
     private String image;
 
-    public MyDog(String petName, String petType, String breed, String age, String petSize, String gender, String petvaccination,String image) {
+    public MyDogCRUD( String  id, String petName, String petType, String breed, String age, String petSize, String gender, String petvaccination, String image) {
         this.petName = petName;
         this.petType = petType;
         Breed = breed;
@@ -21,9 +22,10 @@ public class MyDog implements Serializable {
         Gender = gender;
         this.petvaccination = petvaccination;
         this.image = image;
+        this._id = id;
     }
 
-    public MyDog() {
+    public MyDogCRUD() {
     }
 
     public String getPetName() {
@@ -88,5 +90,13 @@ public class MyDog implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getId() {
+        return _id;
+    }
+
+    public void setId(String id) {
+        this._id = id;
     }
 }

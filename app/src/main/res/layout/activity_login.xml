@@ -31,6 +31,7 @@
             android:layout_marginTop="30dp"
             android:hint="Username"
             android:paddingLeft="20dp"
+            android:text="suman123"
             android:background="@drawable/bg_edittext"
             android:layout_width="match_parent"
             android:layout_height="48dp"/>
@@ -39,7 +40,9 @@
             android:id="@+id/ettpassword"
             android:layout_marginTop="14dp"
             android:hint="Password"
+            android:inputType="textPassword"
             android:paddingLeft="20dp"
+            android:text="suman"
             android:background="@drawable/bg_edittext"
             android:layout_width="match_parent"
             android:layout_height="48dp"/>
