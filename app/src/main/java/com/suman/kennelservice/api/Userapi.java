@@ -2,11 +2,14 @@ package com.suman.kennelservice.api;
 
 import com.suman.kennelservice.model.Appointment;
 import com.suman.kennelservice.model.MyDog;
+import com.suman.kennelservice.model.MyDogCRUD;
 import com.suman.kennelservice.model.User;
 import com.suman.kennelservice.model.UserCRUD;
 import com.suman.kennelservice.model.Userlogin;
 import com.suman.kennelservice.serverresponse.ImageResponse;
 import com.suman.kennelservice.serverresponse.SignupResponse;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -45,4 +48,7 @@ public interface Userapi {
     //Appointment
     @POST("appointment")
     Call<Appointment> postappointment(@Header("Authorization") String token, @Body Appointment appointment);
+
+    @GET("appointment")
+    Call<List<Appointment>> getappoint(@Header("Authorization") String token);
 }

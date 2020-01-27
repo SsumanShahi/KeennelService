@@ -2,12 +2,14 @@ package com.suman.kennelservice.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.suman.kennelservice.NavActivity;
 import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
 import com.suman.kennelservice.api.Userapi;
@@ -63,6 +65,7 @@ public class AppointmentActivity extends AppCompatActivity {
                 }
 
                 Toast.makeText(AppointmentActivity.this, "Appointment Successfull", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(AppointmentActivity.this, NavActivity.class));
             }
 
             @Override
