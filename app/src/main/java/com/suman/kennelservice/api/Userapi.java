@@ -1,5 +1,7 @@
 package com.suman.kennelservice.api;
 
+import com.suman.kennelservice.model.Appointment;
+import com.suman.kennelservice.model.MyDog;
 import com.suman.kennelservice.model.User;
 import com.suman.kennelservice.model.UserCRUD;
 import com.suman.kennelservice.model.Userlogin;
@@ -38,4 +40,9 @@ public interface Userapi {
 
     @PUT("users/me")
     Call<UserCRUD> editUser(@Header("Authorization") String token,@Body UserCRUD userCRUD);
+
+
+    //Appointment
+    @POST("appointment")
+    Call<Appointment> postappointment(@Header("Authorization") String token, @Body Appointment appointment);
 }
