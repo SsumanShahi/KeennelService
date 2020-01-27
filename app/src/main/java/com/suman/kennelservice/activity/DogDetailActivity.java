@@ -29,7 +29,7 @@ public class DogDetailActivity extends AppCompatActivity {
 
     private Button btn_edit,btn_delete;
 private ImageView ivDog;
-private TextView tvDogName,tvDogBreed;
+private TextView tvDogName,tvDogBreed,tv_dog_type,tv_dog_age,tv_dog_gender,tv_dog_we,tv_dog_vc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +38,23 @@ private TextView tvDogName,tvDogBreed;
         ivDog= findViewById(R.id.iv_dog);
         tvDogBreed= findViewById(R.id.tv_dog_breed);
         tvDogName= findViewById(R.id.tv_dog_name);
+        tv_dog_type= findViewById(R.id.tv_dog_type);
+        tv_dog_age= findViewById(R.id.tv_dog_age);
+        tv_dog_gender= findViewById(R.id.tv_dog_gender);
+        tv_dog_we= findViewById(R.id.tv_dog_we);
+        tv_dog_we= findViewById(R.id.tv_dog_vc);
 
         btn_edit = findViewById(R.id.btn_edit);
         btn_delete = findViewById(R.id.btn_delete);
         final MyDogCRUD myDog= (MyDogCRUD) getIntent().getSerializableExtra("DogDetail");
         tvDogName.setText(myDog.getPetName());
         tvDogBreed.setText(myDog.getBreed());
+        tv_dog_type.setText(myDog.getPetType());
+        tv_dog_age.setText(myDog.getAge());
+        tv_dog_gender.setText(myDog.getGender());
+        tv_dog_we.setText(myDog.getPetSize());
+        tv_dog_we.setText(myDog.getPetvaccination());
+
         final String imgPath = url.imagePath + myDog.getImage();
         try {
             URL url = new URL(imgPath);

@@ -34,6 +34,7 @@ public class DogBreedDetailActivity extends AppCompatActivity {
             card1.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
             tvdogname.setText(dogName);
             tvdogdescription.setText(getIntent().getStringExtra("DogDescription"));
+
         } catch (IOException e) {
             e.printStackTrace();
         }

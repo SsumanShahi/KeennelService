@@ -52,6 +52,11 @@ public class DogListAdaptar extends RecyclerView.Adapter<DogListAdaptar.DogListV
         final String imgPath = url.imagePath + myDog.getImage();
         holder.tvDogName.setText(myDog.getPetName());
         holder.tvDogBreed.setText(myDog.getBreed());
+        holder.tv_age.setText(myDog.getAge());
+        holder.tv_gen.setText(myDog.getGender());
+        holder.tv_wt.setText(myDog.getPetSize());
+        holder.tv_type.setText(myDog.getPetType());
+        holder.tv_vc.setText(myDog.getPetvaccination());
         Log.d("EditDogDetailsActivity", "response other than 200"+myDog.getId());
 
         StrictModeClass.StrictMode();
@@ -68,6 +73,7 @@ public class DogListAdaptar extends RecyclerView.Adapter<DogListAdaptar.DogListV
                 Log.d("DogListAdapter","on click button"+myDog.getId());
                 Intent intent = new Intent(mcontext, DogDetailActivity.class);
                 intent.putExtra("DogDetail", myDog);
+                intent.putExtra("DogDetail", myDog);
                 mcontext.startActivity(intent);
             }
         });
@@ -80,7 +86,7 @@ public class DogListAdaptar extends RecyclerView.Adapter<DogListAdaptar.DogListV
 
     public class DogListViewHolder extends RecyclerView.ViewHolder {
         private ImageView ivDog;
-        private TextView tvDogName, tvDogBreed;
+        private TextView tvDogName, tvDogBreed,tv_age,tv_gen,tv_wt,tv_vc,tv_type;
         private CardView cvDogItem;
         private ConstraintLayout constraintLayout;
 
@@ -90,6 +96,11 @@ public class DogListAdaptar extends RecyclerView.Adapter<DogListAdaptar.DogListV
             ivDog = itemView.findViewById(R.id.iv_dog);
             tvDogName = itemView.findViewById(R.id.tv_dog_name);
             tvDogBreed = itemView.findViewById(R.id.tv_dog_breed);
+            tv_age = itemView.findViewById(R.id.tv_age);
+            tv_gen = itemView.findViewById(R.id.tv_gen);
+            tv_wt = itemView.findViewById(R.id.tv_wt);
+            tv_vc = itemView.findViewById(R.id.tv_vc);
+            tv_type = itemView.findViewById(R.id.tv_type);
             cvDogItem = itemView.findViewById(R.id.cv_dog_list);
             constraintLayout = itemView.findViewById(R.id.cv);
 

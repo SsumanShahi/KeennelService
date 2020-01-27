@@ -25,7 +25,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="24dp"
         android:text="Dog Name"
-        android:textSize="10dp" />
+        android:textSize="30dp" />
 
     <!--        <TextView-->
     <!--            android:id="@+id/tvdogtype"-->
@@ -39,7 +39,7 @@
 
     <TextView
         android:id="@+id/tvdogdescription"
-        android:textSize="9dp"
+        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/card1"
