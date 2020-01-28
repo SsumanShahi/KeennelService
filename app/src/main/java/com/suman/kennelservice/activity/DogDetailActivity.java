@@ -30,11 +30,13 @@ public class DogDetailActivity extends AppCompatActivity {
     private Button btn_edit,btn_delete;
 private ImageView ivDog;
 private TextView tvDogName,tvDogBreed,tv_dog_type,tv_dog_age,tv_dog_gender,tv_dog_we,tv_dog_vc;
-
+private Button button2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog_detail);
+
+
         ivDog= findViewById(R.id.iv_dog);
         tvDogBreed= findViewById(R.id.tv_dog_breed);
         tvDogName= findViewById(R.id.tv_dog_name);
@@ -43,6 +45,7 @@ private TextView tvDogName,tvDogBreed,tv_dog_type,tv_dog_age,tv_dog_gender,tv_do
         tv_dog_gender= findViewById(R.id.tv_dog_gender);
         tv_dog_we= findViewById(R.id.tv_dog_we);
         tv_dog_we= findViewById(R.id.tv_dog_vc);
+
 
         btn_edit = findViewById(R.id.btn_edit);
         btn_delete = findViewById(R.id.btn_delete);

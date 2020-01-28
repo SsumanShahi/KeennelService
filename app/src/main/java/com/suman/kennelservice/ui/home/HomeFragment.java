@@ -51,6 +51,8 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 
+
+
         carouselView = root.findViewById(R.id.cara1);
         carouselView.setPageCount(mImages.length);
         carouselView.setImageListener(new ImageListener() {

@@ -50,6 +50,8 @@ public class EditProfileActivity extends AppCompatActivity {
     private Button btnupdate;
     private String imagePath;
     private String imageName="";
+
+
     User user;
 
     @Override
