@@ -19,6 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        getSupportActionBar().hide();
         img1 = findViewById(R.id.img1);
         // using a thread and hald screen for 2 seconds
 

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/text_tools"
+        android:id="@+id/text_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -16,4 +17,70 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="   About Pet Kennel"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_margin="20sp"
+        android:drawableLeft="@drawable/ic_menu_camera"
+        />
+
+    <TextView
+        android:drawableLeft="@drawable/ic_menu_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="   Feedback"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_margin="20sp"
+        />
+
+    <TextView
+        android:drawableLeft="@drawable/ic_menu_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="   Terms and Conditions"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_margin="20sp"
+        />
+
+    <TextView
+        android:drawableLeft="@drawable/ic_menu_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="   FAQs"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-light"
+        android:layout_margin="20sp"
+        />
+
+    <Button
+        android:id="@+id/btn_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MAP"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded"
+        android:layout_margin="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Version 3.5.5 C Foodmandu Pvt.Ltd"
+        android:layout_marginTop="300sp"
+        android:gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Developed by Ekbana"
+        android:layout_marginTop="3dp"
+        android:gravity="center_horizontal"/>
+</LinearLayout>

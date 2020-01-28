@@ -27,9 +27,11 @@ import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
 import com.suman.kennelservice.adaptar.Dogbreedadaptar;
 import com.suman.kennelservice.adaptar.ProductAdaptar;
+import com.suman.kennelservice.adaptar.PuppyAdapater;
 import com.suman.kennelservice.api.DogBreedapi;
 import com.suman.kennelservice.model.Dogbreeds;
 import com.suman.kennelservice.model.ProductClass;
+import com.suman.kennelservice.model.Puppy;
 import com.suman.kennelservice.strictmode.StrictModeClass;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
@@ -48,15 +50,17 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
 
 
-    RecyclerView recycler2;
+    RecyclerView recycler2,recycler3;
     private ImageView product_image;
 
     //Adapatar
     ProductAdaptar productAdaptar;
+    PuppyAdapater puppyAdapater;
 
 
     //List of array
     List<ProductClass> productClasses;
+    List<Puppy> puppies;
 
     private int[] mImages = new int[]{
             R.drawable.sl1, R.drawable.sl2, R.drawable.sl3, R.drawable.sl4,
@@ -93,6 +97,7 @@ public class HomeFragment extends Fragment {
         });
 
         recycler2 = root.findViewById(R.id.recycler2);
+        recycler3 = root.findViewById(R.id.recycler3);
         product_image = root.findViewById(R.id.product_image);
 
 
@@ -154,6 +159,36 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getActivity(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
+
+
+        //puppies
+        puppies = new ArrayList<>();
+        DogBreedapi breedapi = url.getInstance().create(DogBreedapi.class);
+        Call<List<Puppy>> puppyList = breedapi.getpuppy();
+        Call<Puppy> puppyCall = breedapi.getpuppyimage(url.token);
+        puppyList.enqueue(new Callback<List<Puppy>>() {
+            @Override
+            public void onResponse(Call<List<Puppy>> call, Response<List<Puppy>> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(getContext(), "Code Error" + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                List<Puppy> puppies = response.body();
+                puppyAdapater = new PuppyAdapater(getContext(),puppies);
+                recycler3.setHasFixedSize(true);
+                recycler3.setAdapter(puppyAdapater);
+                recycler3.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Puppy>> call, Throwable t) {
+
+            }
+        });
+
+
 
 
         return root;
