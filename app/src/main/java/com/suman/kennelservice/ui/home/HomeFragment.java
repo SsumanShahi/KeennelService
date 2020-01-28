@@ -21,10 +21,19 @@ import com.suman.kennelservice.BLL.LoginBLL;
 import com.suman.kennelservice.NavActivity;
 import com.suman.kennelservice.R;
 import com.suman.kennelservice.strictmode.StrictModeClass;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageClickListener;
+import com.synnapps.carouselview.ImageListener;
 
 public class HomeFragment extends Fragment {
 
 
+
+    private int[] mImages = new int[]{
+            R.drawable.sl1, R.drawable.sl2, R.drawable.sl3, R.drawable.sl4,
+            R.drawable.sl5, R.drawable.sl6
+    };
+    CarouselView carouselView;
 
 
     private HomeViewModel homeViewModel;
@@ -41,6 +50,16 @@ public class HomeFragment extends Fragment {
 //                textView.setText(s);
 //            }
 //        });
+
+        carouselView = root.findViewById(R.id.cara1);
+        carouselView.setPageCount(mImages.length);
+        carouselView.setImageListener(new ImageListener() {
+            @Override
+
+            public void setImageForPosition(int position, ImageView imageView) {
+                imageView.setImageResource(mImages[position]);
+            }
+        });
 
 
         return root;

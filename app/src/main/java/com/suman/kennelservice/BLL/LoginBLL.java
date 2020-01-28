@@ -12,7 +12,16 @@ import retrofit2.Response;
 import retrofit2.http.Url;
 
 public class LoginBLL {
+
+    private String username;
+    private String password;
     boolean isSuccess = false;
+
+    public LoginBLL(String username, String password) {
+        this.username = username;
+        this.password = password;
+
+    }
 
     public boolean checkUser(String username, String password) {
 
@@ -32,5 +41,13 @@ public class LoginBLL {
             e.printStackTrace();
         }
         return isSuccess;
+    }
+
+    public boolean checkUser() {
+
+        return isSuccess;
+    }
+
+    public LoginBLL() {
     }
 }

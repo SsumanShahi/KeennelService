@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = ettpassword.getText().toString();
 
 
-        LoginBLL loginBLL = new LoginBLL();
+        LoginBLL loginBLL = new LoginBLL(username,password);
         Userlogin userlogin = new Userlogin(username, password);
 
         StrictModeClass.StrictMode();
