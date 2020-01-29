@@ -60,7 +60,7 @@ public class SlideshowFragment extends Fragment {
 
         productClasses = new ArrayList<>();
 
-        DogBreedapi dogBreedapi = url.getInstance().create(DogBreedapi.class);
+    /*    DogBreedapi dogBreedapi = url.getInstance().create(DogBreedapi.class);
         Call<List<ProductClass>> prd = dogBreedapi.getproducts();
 
         prd.enqueue(new Callback<List<ProductClass>>() {
@@ -82,7 +82,7 @@ public class SlideshowFragment extends Fragment {
             public void onFailure(Call<List<ProductClass>> call, Throwable t) {
                 Toast.makeText(getContext(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
 
         return root;
     }

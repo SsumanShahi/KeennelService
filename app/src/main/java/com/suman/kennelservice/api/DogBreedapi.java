@@ -3,6 +3,7 @@ package com.suman.kennelservice.api;
 import com.suman.kennelservice.model.Dogbreeds;
 import com.suman.kennelservice.model.ProductClass;
 import com.suman.kennelservice.model.Puppy;
+import com.suman.kennelservice.model.Training;
 import com.suman.kennelservice.model.User;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public interface DogBreedapi {
 
     //forproduct
     @GET("product")
-    Call<List<ProductClass>> getproducts();
+    Call<List<List<ProductClass>>> getproducts();
 
     @GET("product")
     Call<ProductClass> getproductimage(@Header("Authorization")String token);
@@ -40,5 +41,13 @@ public interface DogBreedapi {
     @GET("puppy")
     Call<Puppy> getpuppyimage(@Header("Authorization")String token);
 
+
+    //for training
+    @GET("training")
+    Call<List<Training>> gettrain();
+
+
+    @GET("training")
+    Call<Training> gettrainimage(@Header("Authorization")String token);
 
 }

@@ -3,6 +3,7 @@ package com.suman.kennelservice.ui.home;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,10 +29,12 @@ import com.suman.kennelservice.Url.url;
 import com.suman.kennelservice.adaptar.Dogbreedadaptar;
 import com.suman.kennelservice.adaptar.ProductAdaptar;
 import com.suman.kennelservice.adaptar.PuppyAdapater;
+import com.suman.kennelservice.adaptar.TrainingAdaptar;
 import com.suman.kennelservice.api.DogBreedapi;
 import com.suman.kennelservice.model.Dogbreeds;
 import com.suman.kennelservice.model.ProductClass;
 import com.suman.kennelservice.model.Puppy;
+import com.suman.kennelservice.model.Training;
 import com.suman.kennelservice.strictmode.StrictModeClass;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
@@ -50,17 +53,19 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
 
 
-    RecyclerView recycler2,recycler3;
-    private ImageView product_image;
+    RecyclerView recycler2,recycler3,recycler4;
+    private ImageView product_image,pup_image,trimage;
 
     //Adapatar
     ProductAdaptar productAdaptar;
     PuppyAdapater puppyAdapater;
+    TrainingAdaptar trainingAdaptar;
 
 
     //List of array
     List<ProductClass> productClasses;
     List<Puppy> puppies;
+    List<Training> trainings;
 
     private int[] mImages = new int[]{
             R.drawable.sl1, R.drawable.sl2, R.drawable.sl3, R.drawable.sl4,
@@ -98,36 +103,46 @@ public class HomeFragment extends Fragment {
 
         recycler2 = root.findViewById(R.id.recycler2);
         recycler3 = root.findViewById(R.id.recycler3);
+        recycler4 = root.findViewById(R.id.recycler4);
         product_image = root.findViewById(R.id.product_image);
+        pup_image = root.findViewById(R.id.pup_image);
+        trimage = root.findViewById(R.id.trimage);
 
 
         //Productview
         productClasses = new ArrayList<>();
 
         DogBreedapi dogBreedapi = url.getInstance().create(DogBreedapi.class);
-        Call<List<ProductClass>> getproducts = dogBreedapi.getproducts();
+        Call<List<List<ProductClass>>> getproducts = dogBreedapi.getproducts();
         Call<ProductClass> productClassCall = dogBreedapi.getproductimage(url.token);
 
-        getproducts.enqueue(new Callback<List<ProductClass>>() {
+        getproducts.enqueue(new Callback<List<List<ProductClass>>>() {
+
             @Override
-            public void onResponse(Call<List<ProductClass>> call, Response<List<ProductClass>> response) {
+            public void onResponse(Call<List<List<ProductClass>>> call, Response<List<List<ProductClass>>> response) {
                 if(!response.isSuccessful())
                 {
+                    Log.d("HomeFragment","response body is "+response.code());
+
                     Toast.makeText(getContext(), "Code Error" + response.code(), Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                List<ProductClass> productClasses = response.body();
-                ProductAdaptar productAdaptar = new ProductAdaptar(getContext(),productClasses);
+                List<List<ProductClass>> productClasses = response.body();
+                List<ProductClass> productClasses1= productClasses.get(0);
+                Log.d("HomeFragment","response body is "+response.body());
+                ProductAdaptar productAdaptar = new ProductAdaptar(getContext(),productClasses1);
                 recycler2.setHasFixedSize(true);
-                recycler2.setAdapter(productAdaptar);
                 recycler2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+                recycler2.setAdapter(productAdaptar);
 //                recycler2.setLayoutManager(new LinearLayoutManager(getContext()));
             }
 
             @Override
-            public void onFailure(Call<List<ProductClass>> call, Throwable t) {
+            public void onFailure(Call<List<List<ProductClass>>> call, Throwable t) {
                 Toast.makeText(getContext(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                Log.d("HomeFragment","response body is "+t.getLocalizedMessage());
+
             }
         });
 
@@ -184,13 +199,94 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Puppy>> call, Throwable t) {
-
+                Toast.makeText(getContext(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
+        puppyCall.enqueue(new Callback<Puppy>() {
+            @Override
+            public void onResponse(Call<Puppy> call, Response<Puppy> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(getContext(), "Error code" + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String imgPath = url.imagePath +  response.body().getImage();
+//                Picasso.get().load(imgPath).into(card1);
+                StrictModeClass.StrictMode();
+                try{
 
 
+                    URL url = new URL(imgPath);
+                    pup_image.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
 
+                }  catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Puppy> call, Throwable t) {
+                Toast.makeText(getContext(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        //Training
+
+        trainings = new ArrayList<>();
+        DogBreedapi dogBreedapi1 = url.getInstance().create(DogBreedapi.class);
+        final Call<List<Training>> train = dogBreedapi1.gettrain();
+        Call<Training> trainingCall = dogBreedapi1.gettrainimage(url.token);
+
+        train.enqueue(new Callback<List<Training>>() {
+            @Override
+            public void onResponse(Call<List<Training>> call, Response<List<Training>> response) {
+                if(!response.isSuccessful())
+                {
+                    Toast.makeText(getContext(), "Error code" + response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                List<Training> trainings = response.body();
+                trainingAdaptar = new TrainingAdaptar(getContext(),trainings);
+                recycler4.setHasFixedSize(true);
+                recycler4.setAdapter(trainingAdaptar);
+                recycler4.setLayoutManager(new LinearLayoutManager(getContext()));
+            }
+
+            @Override
+            public void onFailure(Call<List<Training>> call, Throwable t) {
+                Toast.makeText(getContext(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        trainingCall.enqueue(new Callback<Training>() {
+        @Override
+        public void onResponse(Call<Training> call, Response<Training> response) {
+        if(!response.isSuccessful())
+        {
+            Toast.makeText(getContext(), "Error code" + response.code(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String imgPath = url.imagePath +  response.body().getImage();
+//                Picasso.get().load(imgPath).into(card1);
+        StrictModeClass.StrictMode();
+        try{
+
+
+            URL url = new URL(imgPath);
+            trimage.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+
+        }  catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onFailure(Call<Training> call, Throwable t) {
+
+    }
+});
         return root;
     }
 
