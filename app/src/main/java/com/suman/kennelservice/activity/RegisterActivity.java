@@ -44,6 +44,8 @@ public class RegisterActivity extends AppCompatActivity {
     private String imagePath;
     private String imageName="";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
         etcmpassword=findViewById(R.id.etcmpassword);
         btnreg=findViewById(R.id.btnreg);
         txtlog=findViewById(R.id.txtlog);
+        getSupportActionBar().hide();
 
         txtlog.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -47,7 +47,7 @@ public class SplashActivity extends AppCompatActivity {
 //                    finish();
 //                }
 ////
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SplashActivity.this, WifiActivity.class);
                 startActivity(intent);
                 finish();//close the activity
             }
