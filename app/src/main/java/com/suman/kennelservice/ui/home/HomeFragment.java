@@ -118,16 +118,16 @@ public class HomeFragment extends Fragment {
                 }
 
                 List<ProductClass> productClasses = response.body();
-                productAdaptar = new ProductAdaptar(getContext(),productClasses);
+                ProductAdaptar productAdaptar = new ProductAdaptar(getContext(),productClasses);
                 recycler2.setHasFixedSize(true);
                 recycler2.setAdapter(productAdaptar);
-//
-                recycler2.setLayoutManager(new LinearLayoutManager(getContext()));
+                recycler2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+//                recycler2.setLayoutManager(new LinearLayoutManager(getContext()));
             }
 
             @Override
             public void onFailure(Call<List<ProductClass>> call, Throwable t) {
-                Toast.makeText(getActivity(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -156,7 +156,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ProductClass> call, Throwable t) {
-                Toast.makeText(getActivity(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Error" + t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
         });
 

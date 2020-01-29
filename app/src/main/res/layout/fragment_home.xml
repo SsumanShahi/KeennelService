@@ -23,7 +23,6 @@
             app:radius="6dp"
             app:slideInterval="3000"
             app:strokeColor="#ede4ed"
-
             app:strokeWidth="1dp" />
         <TextView
             android:id="@+id/tvproduct"

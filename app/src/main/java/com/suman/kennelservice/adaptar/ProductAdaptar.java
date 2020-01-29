@@ -40,7 +40,7 @@ public class ProductAdaptar extends RecyclerView.Adapter<ProductAdaptar.ProductV
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.product_layout,parent,false);
 
-        return new ProductViewHolder(view);
+        return  new ProductViewHolder(view);
     }
 
     @Override
