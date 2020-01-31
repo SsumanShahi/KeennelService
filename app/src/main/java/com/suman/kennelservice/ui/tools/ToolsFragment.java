@@ -1,6 +1,8 @@
 package com.suman.kennelservice.ui.tools;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.CharacterPickerDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.suman.kennelservice.R;
+import com.suman.kennelservice.activity.MapsActivity;
 
 public class ToolsFragment extends Fragment {
 
@@ -35,6 +38,14 @@ public class ToolsFragment extends Fragment {
 //        });
 
         btn_map = root.findViewById(R.id.btn_map);
+
+        btn_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MapsActivity.class);
+                startActivity(intent);
+            }
+        });
         return root;
     }
 }
