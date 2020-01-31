@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_grey"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".LoginActivity"
+    tools:deviceIds="wear">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/inner_frame_layout_padding"
+        app:boxedEdges="all">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:padding="40dp">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Welcome Back!"
+            android:textColor="#0F0F0F"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/ettusername"
+            android:layout_marginTop="30dp"
+            android:hint="Username"
+            android:paddingLeft="20dp"
+            android:text="suman123"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <EditText
+            android:id="@+id/ettpassword"
+            android:layout_marginTop="14dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:text="suman"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <Button
+            android:id="@+id/btnlogin"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_btn"
+            android:textColor="#F3F3F3"
+            android:text="Sign IN"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Account?"
+                android:textSize="16dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:textColor="#FFFFFF"/>
+
+            <TextView
+                android:id="@+id/reg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register!!"
+                android:layout_marginLeft="4dp"
+                android:textSize="16dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+        </LinearLayout>
+
+
+    </FrameLayout>
+</androidx.wear.widget.BoxInsetLayout>
