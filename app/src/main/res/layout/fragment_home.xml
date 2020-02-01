@@ -10,7 +10,8 @@
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#33282A">
 
 
         <com.synnapps.carouselview.CarouselView
@@ -24,32 +25,40 @@
             app:slideInterval="3000"
             app:strokeColor="#ede4ed"
             app:strokeWidth="1dp" />
+
         <TextView
             android:id="@+id/tvproduct"
-            android:layout_width="wrap_content"
+            android:layout_width="254dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="324dp"
+            android:fontFamily="@font/quicksand_bold"
             android:text="Our Products"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="8dp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cara1" />
 
         <TextView
             android:id="@+id/tvchange"
-            android:layout_width="wrap_content"
+            android:layout_width="256dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="264dp"
+            android:fontFamily="@font/quicksand_bold"
             android:text="Make your Pet Happy"
-            android:textSize="8sp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:paddingLeft="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvproduct" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler2"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="1dp"
+            android:layout_height="280dp"
+            android:layout_marginTop="5dp"
             android:scrollbars="horizontal"
             app:fastScrollEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,19 +67,23 @@
 
         <TextView
             android:id="@+id/tvpuppy"
-            android:layout_width="wrap_content"
+            android:layout_width="158dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="324dp"
-            android:text="Puppies"
+            android:fontFamily="@font/quicksand_bold"
+            android:paddingLeft="8dp"
+            android:text="PUPPIES"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycler2" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler3"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="1dp"
+            android:layout_height="260dp"
+            android:layout_marginTop="3dp"
             android:scrollbars="horizontal"
             app:fastScrollEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,11 +91,15 @@
 
         <TextView
             android:id="@+id/tvtraining"
-            android:layout_width="wrap_content"
+            android:layout_width="233dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="324dp"
-            android:text="Our Products"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Training"
+            android:paddingLeft="8dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recycler3" />
 
@@ -90,9 +107,10 @@
             android:id="@+id/recycler4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="5dp"
             android:scrollbars="horizontal"
             app:fastScrollEnabled="false"
+            android:background="#DC464242"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvtraining" />
 

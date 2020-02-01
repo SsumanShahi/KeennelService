@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="10sp">
+    android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycledogbreed"
+        android:background="#DD91F1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
