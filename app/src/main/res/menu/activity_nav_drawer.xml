@@ -20,11 +20,11 @@
 
         <item
             android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_share"
-            android:title="@string/menu_appointment" />
+            android:icon="@drawable/nurse"
+            android:title="@string/menu_Appointment" />
         <item
             android:id="@+id/nav_send"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/veterinary"
             android:title="@string/menu_dog_list" />
         <item
             android:id="@+id/nav_profile"
