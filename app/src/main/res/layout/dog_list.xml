@@ -1,130 +1,348 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#050505"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:textColor="#FF9800"
+            android:textSize="24dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Dogs"/>
+
+
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_dog_list"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:cardCornerRadius="8dp"
+        android:layout_marginTop="16dp"
+        >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cv"
+<LinearLayout
+    android:id="@+id/cv"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:textColor="#F22F11"
+                android:fontFamily="@font/quicksand_bold"
+                android:textSize="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dog"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Dog Name"
+                        android:fontFamily="@font/quicksand_bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_dog_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="Dog Name"
+                        android:layout_gravity="center"
+                        android:textColor="#050505"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Dog Type"
+                        android:fontFamily="@font/quicksand_bold"/>
+                    <TextView
+                        android:id="@+id/tv_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="#050505"
+                        android:text="Dog Type"
+                        android:layout_gravity="center"
+                        android:fontFamily="sans-serif-condensed"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Dog Breed"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:id="@+id/tv_dog_breed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="#050505"
+                        android:layout_gravity="center"
+                        android:text="Dog Breed"
+                        android:fontFamily="sans-serif-condensed"/>
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Dog Age"
+                        android:fontFamily="@font/quicksand_bold"/>
+                    <TextView
+                        android:id="@+id/tv_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="#050505"
+                        android:layout_gravity="center"
+                        android:text="Dog Age"
+                        android:fontFamily="sans-serif-condensed"/>
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Dog Gender"
+                        android:fontFamily="@font/quicksand_bold"/>
+                    <TextView
+                        android:id="@+id/tv_gen"
+                        android:text="Dog Gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_gravity="center"
+                        android:textColor="#050505"
+                        android:fontFamily="sans-serif-condensed"/>
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Dog Weight"
+                        android:fontFamily="@font/quicksand_bold"/>
+                    <TextView
+                        android:id="@+id/tv_wt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="#050505"
+                        android:text="Dog Weight"
+                        android:layout_gravity="center"
+                        android:fontFamily="sans-serif-condensed"/>
+                    <TextView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Dog Vaccination"
+                        android:fontFamily="@font/quicksand_bold"/>
+                    <TextView
+                        android:id="@+id/tv_vc"
+                        android:text="Dog Vaccination"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="#050505"
+                        android:layout_gravity="center"
+                        android:fontFamily="sans-serif-condensed"/>
+
+
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="225dp">
-
-            <TextView
-                android:id="@+id/tv_age"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Age"
-                android:textColor="@color/colorAccent"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tv_type" />
-
-            <TextView
-                android:id="@+id/tv_gen"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Gender"
-                android:textColor="@color/colorAccent"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tv_age" />
-
-            <TextView
-                android:id="@+id/tv_wt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Weight"
-                android:textColor="@color/colorAccent"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tv_gen" />
-
-            <TextView
-                android:id="@+id/tv_vc"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Vaccination"
-                android:textColor="@color/colorAccent"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tv_wt" />
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/iv_dog"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="70dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/dog" />
+                android:src="@drawable/dog"/>
+        </RelativeLayout>
+    </LinearLayout>
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.3" />
 
-            <TextView
-                android:id="@+id/tv_dog_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="DogName"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_dog_breed"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Breed"
-                android:textColor="@color/colorAccent"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tv_dog_name" />
 
-            <TextView
-                android:id="@+id/tv_type"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Type"
-                android:textColor="@color/colorAccent"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/tv_dog_breed" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+
     </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/cv_dog_list"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:cardCornerRadius="8dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/cv"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="225dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_age"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="Age"-->
+<!--                android:textColor="@color/colorAccent"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"-->
+<!--                app:layout_constraintHorizontal_bias="1.0"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_type" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_gen"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="Gender"-->
+<!--                android:textColor="@color/colorAccent"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"-->
+<!--                app:layout_constraintHorizontal_bias="1.0"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_age" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_wt"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="Weight"-->
+<!--                android:textColor="@color/colorAccent"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"-->
+<!--                app:layout_constraintHorizontal_bias="1.0"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_gen" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_vc"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="Vaccination"-->
+<!--                android:textColor="@color/colorAccent"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"-->
+<!--                app:layout_constraintHorizontal_bias="0.0"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_wt" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_dog"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@+id/guideline"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:srcCompat="@drawable/dog" />-->
+
+<!--            <androidx.constraintlayout.widget.Guideline-->
+<!--                android:id="@+id/guideline"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                app:layout_constraintGuide_percent="0.3" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_dog_name"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="DogName"-->
+<!--                android:textColor="@color/colorPrimary"-->
+<!--                android:textSize="18sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_dog_breed"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="Breed"-->
+<!--                android:textColor="@color/colorAccent"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"-->
+<!--                app:layout_constraintHorizontal_bias="1.0"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_dog_name" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_type"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:text="Type"-->
+<!--                android:textColor="@color/colorAccent"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="@+id/tv_dog_name"-->
+<!--                app:layout_constraintHorizontal_bias="0.0"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/guideline"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tv_dog_breed" />-->
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--    </androidx.cardview.widget.CardView>-->
+</LinearLayout>

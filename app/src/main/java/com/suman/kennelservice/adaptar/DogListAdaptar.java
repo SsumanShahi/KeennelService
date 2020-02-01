@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -88,7 +89,7 @@ public class DogListAdaptar extends RecyclerView.Adapter<DogListAdaptar.DogListV
         private ImageView ivDog;
         private TextView tvDogName, tvDogBreed,tv_age,tv_gen,tv_wt,tv_vc,tv_type;
         private CardView cvDogItem;
-        private ConstraintLayout constraintLayout;
+        private LinearLayout constraintLayout;
 
 
         public DogListViewHolder(@NonNull View itemView) {
