@@ -342,6 +342,7 @@
 
 
     </RelativeLayout>
+    </RelativeLayout>
 
 
     <!--    <LinearLayout-->
@@ -443,6 +444,6 @@
 
 
 <!--    </LinearLayout>-->
-    </RelativeLayout>
+
 
 </ScrollView>

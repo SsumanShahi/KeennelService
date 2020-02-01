@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,9 +31,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
-    CircleImageView profileimg1;
+    ImageView profileimg1;
     private TextView tvfname, tvlname, tvaddress, tvphone, tvemail, tvusername;
-    Button btneditprofie;
+    TextView btneditprofie;
     User user;
 
 

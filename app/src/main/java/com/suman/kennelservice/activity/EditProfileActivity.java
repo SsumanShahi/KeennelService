@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,9 +46,9 @@ import retrofit2.Response;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    private CircleImageView profileimg;
+    private ImageView profileimg;
     private EditText etfname, etlname, etaddress, etphone, etemail, etusername;;
-    private Button btnupdate;
+    private TextView btnupdate,tvusername;
     private String imagePath;
     private String imageName="";
 
@@ -67,10 +68,11 @@ public class EditProfileActivity extends AppCompatActivity {
         etemail = findViewById(R.id.etemail);
         etusername=findViewById(R.id.etusername);
         btnupdate=findViewById(R.id.btnupdate);
+        tvusername=findViewById(R.id.tvusername);
         user = new User();
         user= (User) getIntent().getSerializableExtra("User");
         Log.d("Edit profile","phone number is ="+user.getPhoneNumber());
-
+        tvusername.setText(user.getUsername());
         etfname.setText(user.getFirstName());
         etlname.setText(user.getLastName());
         etaddress.setText(user.getAddress());
