@@ -12,6 +12,8 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.suman.kennelservice.R;
@@ -39,8 +41,8 @@ import retrofit2.Response;
 public class DogRegisterActivity extends AppCompatActivity {
 
     private EditText etdogname,etpettype,etbreed,etage,etwieght,etgender,etvaccination;
-    private CircleImageView dogpimg;
-    private Button btndreg;
+    private ImageView dogpimg;
+    private TextView btndreg;
     private String imagePath;
     private String imageName="";
 

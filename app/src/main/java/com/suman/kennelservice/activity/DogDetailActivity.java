@@ -27,7 +27,7 @@ import retrofit2.Response;
 
 public class DogDetailActivity extends AppCompatActivity {
 
-    private Button btn_edit,btn_delete;
+    private TextView btn_edit,btn_delete;
 private ImageView ivDog;
 private TextView tvDogName,tvDogBreed,tv_dog_type,tv_dog_age,tv_dog_gender,tv_dog_we,tv_dog_vc;
 private Button button2;
@@ -35,6 +35,7 @@ private Button button2;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog_detail);
+//        getSupportActionBar().hide();
 
 
         ivDog= findViewById(R.id.iv_dog);

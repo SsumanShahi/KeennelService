@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -44,8 +46,8 @@ import retrofit2.Response;
 public class EditDogDetailsActivity extends AppCompatActivity {
 
     private EditText etdogname,etpettype,etbreed,etage,etwieght,etgender,etvaccination;
-    private CircleImageView dogpimg;
-    private Button btnupdate;
+    private ImageView dogpimg;
+    private TextView btnupdate;
     private String imagePath;
     private String imageName="";
     MyDogCRUD myDog;
