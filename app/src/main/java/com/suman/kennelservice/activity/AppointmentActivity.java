@@ -3,10 +3,13 @@ package com.suman.kennelservice.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.suman.kennelservice.NavActivity;
@@ -14,6 +17,11 @@ import com.suman.kennelservice.R;
 import com.suman.kennelservice.Url.url;
 import com.suman.kennelservice.api.Userapi;
 import com.suman.kennelservice.model.Appointment;
+import com.suman.kennelservice.model.User;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,8 +29,11 @@ import retrofit2.Response;
 
 public class AppointmentActivity extends AppCompatActivity {
 
+    private TextView tvusername,btn_app;
+    private ImageView profileimg1;
     private EditText et_ownername,et_petname,et_breed,et_age,et_gender;
-    private Button btn_app;
+
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +46,18 @@ public class AppointmentActivity extends AppCompatActivity {
         et_age = findViewById(R.id.et_age);
         et_gender = findViewById(R.id.et_gender);
         btn_app = findViewById(R.id.btn_app);
+        tvusername = findViewById(R.id.tvusername);
+        profileimg1 = findViewById(R.id.profileimg1);
+        user=new User();
+        user= (User) getIntent().getSerializableExtra("User");
+        tvusername.setText(user.getUsername());
+        final String imgPath = url.imagePath + user.getImage();
+        try {
+            URL url = new URL(imgPath);
+            profileimg1.setImageBitmap(BitmapFactory.decodeStream((InputStream) url.getContent()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         btn_app.setOnClickListener(new View.OnClickListener() {
             @Override

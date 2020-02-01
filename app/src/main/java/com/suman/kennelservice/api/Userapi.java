@@ -1,6 +1,7 @@
 package com.suman.kennelservice.api;
 
 import com.suman.kennelservice.model.Appointment;
+import com.suman.kennelservice.model.AppointmentCRUD;
 import com.suman.kennelservice.model.MyDog;
 import com.suman.kennelservice.model.MyDogCRUD;
 import com.suman.kennelservice.model.User;
@@ -14,12 +15,14 @@ import java.util.List;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public interface Userapi {
     @POST("users/signup")
@@ -50,5 +53,8 @@ public interface Userapi {
     Call<Appointment> postappointment(@Header("Authorization") String token, @Body Appointment appointment);
 
     @GET("appointment")
-    Call<List<Appointment>> getappoint(@Header("Authorization") String token);
+    Call<List<AppointmentCRUD>> getappoint(@Header("Authorization") String token);
+
+    @DELETE("appointment/{id}")
+    Call<AppointmentCRUD> deleteappointment(@Header("Authorization") String token, @Path("id") String id);
 }

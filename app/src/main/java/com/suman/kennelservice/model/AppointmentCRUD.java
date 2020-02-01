@@ -2,14 +2,19 @@ package com.suman.kennelservice.model;
 
 import java.io.Serializable;
 
-public class Appointment implements Serializable {
+public class AppointmentCRUD implements Serializable {
+    private String _id;
     private String OwnerName;
     private String petname;
     private String Breed;
     private String Age;
     private String Gender;
 
-    public Appointment(String ownerName, String petname, String breed, String age, String gender) {
+    public AppointmentCRUD() {
+    }
+
+    public AppointmentCRUD(String _id, String ownerName, String petname, String breed, String age, String gender) {
+        this._id = _id;
         OwnerName = ownerName;
         this.petname = petname;
         Breed = breed;
@@ -17,7 +22,12 @@ public class Appointment implements Serializable {
         Gender = gender;
     }
 
-    public Appointment() {
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getOwnerName() {
