@@ -1,12 +1,17 @@
 package com.suman.kennelservice.activity;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.loader.content.CursorLoader;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -44,12 +49,19 @@ public class RegisterActivity extends AppCompatActivity {
     private String imagePath;
     private String imageName="";
 
+    private NotificationManagerCompat notificationManagerCompat;
 
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
         profileimg = findViewById(R.id.profileimg);
         etfname = findViewById(R.id.etfname);
         etlname = findViewById(R.id.etlname);
@@ -173,7 +185,11 @@ public class RegisterActivity extends AppCompatActivity {
         startActivityForResult(intent,0);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void signup() {
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
 
         String fname = etfname.getText().toString();
         String lname = etlname.getText().toString();
@@ -196,6 +212,13 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Code"+response.code(), Toast.LENGTH_LONG).show();
                     return;
                 }
+                Notification notification = new NotificationCompat.Builder(RegisterActivity.this, CreateChannel.CHANNEL_1)
+                        .setSmallIcon(R.drawable.not)
+                        .setContentTitle("Register")
+                        .setContentText("Register successful")
+                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                        .build();
+                notificationManagerCompat.notify(1,notification);
                 Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(RegisterActivity.this, ProfileFragment.class);

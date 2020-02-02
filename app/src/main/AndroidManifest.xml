@@ -28,6 +28,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <service android:name=".service.MyService"
+            android:enabled="true"
+            android:exported="false">
+
+        </service>
         <activity android:name=".activity.WifiActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

@@ -1,9 +1,14 @@
 package com.suman.kennelservice.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +35,9 @@ public class LoginActivity extends AppCompatActivity {
     ImageView profileimage;
     Button btnlogin;
     TextView reg;
+    private NotificationManagerCompat notificationManagerCompat;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,9 @@ public class LoginActivity extends AppCompatActivity {
 //        getSupportActionBar().hide();
 
 
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
         ettusername = findViewById(R.id.ettusername);
         ettpassword = findViewById(R.id.ettpassword);
         btnlogin = findViewById(R.id.btnlogin);
@@ -58,7 +68,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void login() {
+        notificationManagerCompat = NotificationManagerCompat.from(this);
+        CreateChannel channel = new CreateChannel(this);
+        channel.createChannel();
         String username = ettusername.getText().toString();
         String password = ettpassword.getText().toString();
 
@@ -70,12 +84,20 @@ public class LoginActivity extends AppCompatActivity {
         Userapi userapi = url.getInstance().create(Userapi.class);
         Call<SignupResponse> userCall = userapi.checklogin(userlogin);
         userCall.enqueue(new Callback<SignupResponse>() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onResponse(@NonNull Call<SignupResponse> call, @NonNull Response<SignupResponse> response) {
                 if (!response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Code" + response.code(), Toast.LENGTH_LONG).show();
                     return;
                 }
+                Notification notification = new NotificationCompat.Builder(LoginActivity.this, CreateChannel.CHANNEL_1)
+                        .setSmallIcon(R.drawable.not)
+                        .setContentTitle("Login")
+                        .setContentText("You are login successful")
+                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                        .build();
+                notificationManagerCompat.notify(1,notification);
                 Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
                 url.token += response.body().getToken();
                 Intent intent = new Intent(LoginActivity.this, NavActivity.class);
