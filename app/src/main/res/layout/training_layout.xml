@@ -44,6 +44,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:padding="20sp"
+            android:justificationMode="inter_word"
             android:text="DogDescription"
             android:background="#726262"
             android:textSize="15dp"

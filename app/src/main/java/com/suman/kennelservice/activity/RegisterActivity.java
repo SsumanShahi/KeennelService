@@ -73,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
         etcmpassword=findViewById(R.id.etcmpassword);
         btnreg=findViewById(R.id.btnreg);
         txtlog=findViewById(R.id.txtlog);
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         txtlog.setOnClickListener(new View.OnClickListener() {
             @Override

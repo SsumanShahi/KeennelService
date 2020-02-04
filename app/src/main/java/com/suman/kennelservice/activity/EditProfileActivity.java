@@ -127,11 +127,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
                 Toast.makeText(EditProfileActivity.this, "Updated", Toast.LENGTH_LONG).show();
                 Log.d("EditProfileActivity", "response of 200"+response.body().getAddress());
-
-
-//                FragmentManager fm = getSupportFragmentManager();
-//                ProfileFragment profileFragment = new ProfileFragment();
-//                fm.beginTransaction().replace(R.id.l,profileFragment.getTargetFragment()).commit();
                 Intent intent = new Intent(EditProfileActivity.this, NavActivity.class);
                 startActivity(intent);
             }

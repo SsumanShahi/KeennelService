@@ -17,13 +17,13 @@ public class LoginBLL {
     private String password;
     boolean isSuccess = false;
 
-    public LoginBLL(String username, String password) {
-        this.username = username;
-        this.password = password;
+//    public LoginBLL(String username, String password) {
+//        this.username = username;
+//        this.password = password;
+//
+//    }
 
-    }
-
-    public boolean checkUser(String username, String password) {
+    public boolean checklogin(String username, String password) {
 
         Userlogin userlogin = new Userlogin(username,password);
         Userapi userapi = url.getInstance().create(Userapi.class);

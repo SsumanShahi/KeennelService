@@ -76,8 +76,8 @@ public class LoginActivity extends AppCompatActivity {
         String username = ettusername.getText().toString();
         String password = ettpassword.getText().toString();
 
-
-        LoginBLL loginBLL = new LoginBLL(username,password);
+//
+//        LoginBLL loginBLL = new LoginBLL(username,password);
         Userlogin userlogin = new Userlogin(username, password);
 
         StrictModeClass.StrictMode();
@@ -110,5 +110,23 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+//        String username = ettusername.getText().toString();
+//        String password = ettpassword.getText().toString();
+//
+//        LoginBLL loginBLL = new LoginBLL();
+//
+//        StrictModeClass.StrictMode();
+//        if (loginBLL.checklogin(username, password)) {
+//            Intent intent = new Intent(LoginActivity.this, NavActivity.class);
+//            intent.putExtra("Userlogin",databaseList());
+//            startActivity(intent);
+//            finish();
+//        } else {
+//            Toast.makeText(this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
+//            ettusername.requestFocus();
+//        }
     }
 }

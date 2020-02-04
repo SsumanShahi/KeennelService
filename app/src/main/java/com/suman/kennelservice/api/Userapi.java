@@ -16,6 +16,8 @@ import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
@@ -30,7 +32,7 @@ public interface Userapi {
 
 //    @FormUrlEncoded
 //    @POST("users/login")
-//    Call<SignupResponse> checkUser(@Field("username") String username, @Field("password") String password);
+//    Call<SignupResponse> checklogin(@Field("username") String username, @Field("password") String password);
 
 //
     @POST("users/login")
