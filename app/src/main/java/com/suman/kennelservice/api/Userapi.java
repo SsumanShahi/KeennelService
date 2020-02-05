@@ -30,13 +30,13 @@ public interface Userapi {
     @POST("users/signup")
     Call<SignupResponse> registerUser(@Body User user);
 
-//    @FormUrlEncoded
-//    @POST("users/login")
-//    Call<SignupResponse> checklogin(@Field("username") String username, @Field("password") String password);
-
-//
+    @FormUrlEncoded
     @POST("users/login")
-    Call<SignupResponse> checklogin(@Body Userlogin userlogin);
+    Call<SignupResponse> checklogin(@Field("username") String username, @Field("password") String password);
+
+////
+//    @POST("users/login")
+//    Call<SignupResponse> checklogin(@Body Userlogin userlogin);
 
     @Multipart
     @POST("upload")
