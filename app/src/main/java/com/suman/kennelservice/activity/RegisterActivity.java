@@ -78,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent logintent = new Intent(RegisterActivity.this, ProfileFragment.class);
+                Intent logintent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(logintent);
             }
         });

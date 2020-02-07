@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#65DCE5</color>
     <color name="colorAccent">#D81B60</color>
     <color name="textbackgroung">#ffffff</color>
+    <color name="tcolor">#200001</color>
     <color name="drawerbg">#200001</color>
     <color name="drawerfont">#72fdc81a</color>
     <color name="white">#FFFFFF</color>

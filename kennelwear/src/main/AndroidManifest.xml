@@ -28,6 +28,7 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
 
+
         </activity>
         <activity
             android:name=".DashboardActivity"
@@ -41,6 +42,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

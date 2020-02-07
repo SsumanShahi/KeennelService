@@ -15,6 +15,7 @@
         android:background="@color/gradStart">
 
 
+
         <com.synnapps.carouselview.CarouselView
             android:id="@+id/cara1"
             android:layout_width="match_parent"

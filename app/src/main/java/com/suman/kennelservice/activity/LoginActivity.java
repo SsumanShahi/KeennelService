@@ -7,9 +7,12 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,10 +68,31 @@ public class LoginActivity extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+                if (TextUtils.isEmpty(ettusername.getText())) {
+                    ettusername.setError("please enter username");
+                    ettusername.requestFocus();
+                    return;
+                } else if (TextUtils.isEmpty(ettpassword.getText())) {
+                    ettpassword.setError("please enter password");
+                    Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vibrator.vibrate(400);
+                    ettpassword.requestFocus();
+                    return;
+
+
+                }
                 login();
             }
+
         });
-    }
+
+}
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void login() {
@@ -77,6 +101,25 @@ public class LoginActivity extends AppCompatActivity {
         channel.createChannel();
         String username = ettusername.getText().toString();
         String password = ettpassword.getText().toString();
+        LoginBLL loginBLL = new LoginBLL();
+
+        StrictModeClass.StrictMode();
+        if (loginBLL.checklogin(username, password)) {
+            Notification notification = new NotificationCompat.Builder(LoginActivity.this, CreateChannel.CHANNEL_1)
+                    .setSmallIcon(R.drawable.not)
+                    .setContentTitle("Login")
+                    .setContentText("You are login successful")
+                    .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                    .build();
+            notificationManagerCompat.notify(1,notification);
+            Intent intent = new Intent(LoginActivity.this, NavActivity.class);
+            intent.putExtra("Userlogin",databaseList());
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
+            ettusername.requestFocus();
+        }
 
 //
 //        LoginBLL loginBLL = new LoginBLL(username,password);
@@ -118,18 +161,7 @@ public class LoginActivity extends AppCompatActivity {
 //        String username = ettusername.getText().toString();
 //        String password = ettpassword.getText().toString();
 
-        LoginBLL loginBLL = new LoginBLL();
 
-        StrictModeClass.StrictMode();
-        if (loginBLL.checklogin(username, password)) {
-            Intent intent = new Intent(LoginActivity.this, NavActivity.class);
-            intent.putExtra("Userlogin",databaseList());
-            startActivity(intent);
-            finish();
-        } else {
-            Toast.makeText(this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
-            ettusername.requestFocus();
-        }
 
 //        Userapi userapi = url.getInstance().create(Userapi.class);
 //       Call<SignupResponse> userCall = userapi.checklogin(userlogin);
@@ -151,7 +183,5 @@ public class LoginActivity extends AppCompatActivity {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-
-
     }
-}
+    }
