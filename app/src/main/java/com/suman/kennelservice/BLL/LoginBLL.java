@@ -43,11 +43,4 @@ public class LoginBLL {
         return isSuccess;
     }
 
-    public boolean checkUser() {
-
-        return isSuccess;
-    }
-
-    public LoginBLL() {
-    }
 }

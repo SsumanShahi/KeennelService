@@ -204,14 +204,10 @@ public class RegisterActivity extends AppCompatActivity {
         Userapi userapi = url.getInstance().create(Userapi.class);
         Call<SignupResponse> signupResponseCall = userapi.registerUser(user);
 
-
-        signupResponseCall.enqueue(new Callback<SignupResponse>() {
-            @Override
-            public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(RegisterActivity.this, "Code"+response.code(), Toast.LENGTH_LONG).show();
-                    return;
-                }
+        try {
+            Response<SignupResponse> register = signupResponseCall.execute();
+            if(register.isSuccessful() && register.body().getStatus().equals("Signup Success!"))
+            {
                 Notification notification = new NotificationCompat.Builder(RegisterActivity.this, CreateChannel.CHANNEL_1)
                         .setSmallIcon(R.drawable.not)
                         .setContentTitle("Register")
@@ -224,12 +220,43 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent(RegisterActivity.this, ProfileFragment.class);
                 startActivity(intent);
             }
-
-            @Override
-            public void onFailure(Call<SignupResponse> call, Throwable t) {
-                Toast.makeText(RegisterActivity.this, "Error"+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+            else
+            {
+                Toast.makeText(RegisterActivity.this, "failed", Toast.LENGTH_LONG).show();
             }
-        });
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+//        signupResponseCall.enqueue(new Callback<SignupResponse>() {
+//            @Override
+//            public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
+//                if(!response.isSuccessful()){
+//                    Toast.makeText(RegisterActivity.this, "Code"+response.code(), Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//                Notification notification = new NotificationCompat.Builder(RegisterActivity.this, CreateChannel.CHANNEL_1)
+//                        .setSmallIcon(R.drawable.not)
+//                        .setContentTitle("Register")
+//                        .setContentText("Register successful")
+//                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+//                        .build();
+//                notificationManagerCompat.notify(1,notification);
+//                Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_LONG).show();
+//
+//                Intent intent = new Intent(RegisterActivity.this, ProfileFragment.class);
+//                startActivity(intent);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<SignupResponse> call, Throwable t) {
+//                Toast.makeText(RegisterActivity.this, "Error"+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        });
+
+
 
 
 //        SharedPreferences sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);

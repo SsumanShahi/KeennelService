@@ -31,7 +31,6 @@
             android:layout_marginTop="30dp"
             android:hint="Username"
             android:paddingLeft="20dp"
-            android:text="suman123"
             android:background="@drawable/bg_edittext"
             android:layout_width="match_parent"
             android:layout_height="48dp"/>
@@ -42,7 +41,6 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
-            android:text="suman"
             android:background="@drawable/bg_edittext"
             android:layout_width="match_parent"
             android:layout_height="48dp"/>
@@ -152,5 +150,21 @@
 
 
     <!--    </LinearLayout>-->
+    <TextView
+        android:id="@+id/proximitySensor"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="140dp"
+        android:textSize="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </RelativeLayout>

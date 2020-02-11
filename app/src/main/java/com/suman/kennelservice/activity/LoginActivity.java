@@ -9,11 +9,16 @@ import androidx.core.app.NotificationManagerCompat;
 import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -40,6 +45,9 @@ public class LoginActivity extends AppCompatActivity {
     ImageView profileimage;
     Button btnlogin;
     TextView reg;
+    TextView ProximitySensor, data;
+    SensorManager mySensorManager;
+    Sensor myProximitySensor;
     private NotificationManagerCompat notificationManagerCompat;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -49,6 +57,19 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 //        getSupportActionBar().hide();
+        ProximitySensor = (TextView) findViewById(R.id.proximitySensor);
+        data = (TextView) findViewById(R.id.data);
+        mySensorManager = (SensorManager) getSystemService(
+                Context.SENSOR_SERVICE);
+        myProximitySensor = mySensorManager.getDefaultSensor(
+                Sensor.TYPE_PROXIMITY);
+        if (myProximitySensor == null) {
+            ProximitySensor.setText("No Proximity Sensor!");
+        } else {
+            mySensorManager.registerListener(proximitySensorEventListener,
+                    myProximitySensor,
+                    SensorManager.SENSOR_DELAY_NORMAL);
+        }
 
 
         notificationManagerCompat = NotificationManagerCompat.from(this);
@@ -90,6 +111,31 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 }
+
+    SensorEventListener proximitySensorEventListener
+            = new SensorEventListener() {
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+            // TODO Auto-generated method stub
+        }
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            WindowManager.LayoutParams params = LoginActivity.this.getWindow().getAttributes();
+            if(event.sensor.getType()==Sensor.TYPE_PROXIMITY){
+
+                if(event.values[0]==0){
+                    params.flags |= WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+                    params.screenBrightness = 0;
+                    getWindow().setAttributes(params);
+                }
+                else{
+                    params.flags |= WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+                    params.screenBrightness = -1f;
+                    getWindow().setAttributes(params);
+                }
+            }
+        }
+    };
 
 
 

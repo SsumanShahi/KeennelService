@@ -47,9 +47,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NavActivity extends AppCompatActivity {
-    TextView ProximitySensor, data;
-    SensorManager mySensorManager;
-    Sensor myProximitySensor;
+
 
     ImageView imageView;
     private TextView tvusername;
@@ -89,19 +87,6 @@ public class NavActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        ProximitySensor = (TextView) findViewById(R.id.proximitySensor);
-        data = (TextView) findViewById(R.id.data);
-        mySensorManager = (SensorManager) getSystemService(
-                Context.SENSOR_SERVICE);
-        myProximitySensor = mySensorManager.getDefaultSensor(
-                Sensor.TYPE_PROXIMITY);
-        if (myProximitySensor == null) {
-            ProximitySensor.setText("No Proximity Sensor!");
-        } else {
-            mySensorManager.registerListener(proximitySensorEventListener,
-                    myProximitySensor,
-                    SensorManager.SENSOR_DELAY_NORMAL);
-        }
 
 
     }
@@ -168,28 +153,5 @@ public class NavActivity extends AppCompatActivity {
 
 
 
-    SensorEventListener proximitySensorEventListener
-            = new SensorEventListener() {
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-            // TODO Auto-generated method stub
-        }
-        @Override
-        public void onSensorChanged(SensorEvent event) {
-            WindowManager.LayoutParams params = NavActivity.this.getWindow().getAttributes();
-            if(event.sensor.getType()==Sensor.TYPE_PROXIMITY){
 
-                if(event.values[0]==0){
-                    params.flags |= WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
-                    params.screenBrightness = 0;
-                    getWindow().setAttributes(params);
-                }
-                else{
-                    params.flags |= WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
-                    params.screenBrightness = -1f;
-                    getWindow().setAttributes(params);
-                }
-            }
-        }
-    };
 }

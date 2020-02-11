@@ -13,10 +13,18 @@ import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
+import com.suman.kennelwear.ServerResponse.SignupResponse;
+import com.suman.kennelwear.URL.url;
+import com.suman.kennelwear.api.Userapi;
 import com.suman.kennelwear.loginbll.LoginBLL;
+import com.suman.kennelwear.model.Userlogin;
 import com.suman.kennelwear.strictmodeclass.StrictModeClass;
 
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends WearableActivity {
 
@@ -67,18 +75,47 @@ public class MainActivity extends WearableActivity {
 
         String username = etuname.getText().toString();
         String password = etpass.getText().toString();
-        LoginBLL loginBLL = new LoginBLL();
+        Userlogin userlogin = new Userlogin(username,password);
 
         StrictModeClass.StrictMode();
-        if (loginBLL.checklogin(username, password)) {
-            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-            intent.putExtra("Userlogin",databaseList());
-            startActivity(intent);
-            finish();
-        } else {
-            Toast.makeText(this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
-            etuname.requestFocus();
-        }
+
+        Userapi userapi = url.getInstance().create(Userapi.class);
+        Call<SignupResponse> usercall = userapi.checklogin(userlogin);
+        usercall.enqueue(new Callback<SignupResponse>() {
+            @Override
+            public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
+                if(!response.isSuccessful())
+                {
+                    Toast.makeText(MainActivity.this, "Username or password is incorrect", Toast.LENGTH_SHORT).show();
+                    etuname.setText("");
+                    etpass.setText("");
+
+                    return;
+                }
+
+                Toast.makeText(MainActivity.this, "Redirecting.....", Toast.LENGTH_SHORT).show();
+                url.token += response.body().getToken();
+                Toast.makeText(MainActivity.this, "Login succesfull", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+
+            }
+
+            @Override
+            public void onFailure(Call<SignupResponse> call, Throwable t) {
+
+                Toast.makeText(MainActivity.this, "Error"+t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+//        if (loginBLL.checklogin(username, password)) {
+//            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+//            intent.putExtra("Userlogin",databaseList());
+//            startActivity(intent);
+//            finish();
+//        } else {
+//            Toast.makeText(this, "Either username or password is incorrect", Toast.LENGTH_SHORT).show();
+//            etuname.requestFocus();
+//        }
 
     }
 }

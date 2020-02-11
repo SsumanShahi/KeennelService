@@ -27,20 +27,20 @@ public class LoginBLL {
     public boolean checklogin(String username, String password) {
 
 //        Userlogin userlogin = new Userlogin(username,password);
-        Userapi userapi = url.getInstance().create(Userapi.class);
-        Call<SignupResponse> usercall = userapi.checklogin(username,password);
+//        Userapi userapi = url.getInstance().create(Userapi.class);
+//        Call<SignupResponse> usercall = userapi.checklogin(username,password);
 
-        try {
-            Response<SignupResponse> loginResponse = usercall.execute();
-            if (loginResponse.isSuccessful()
-                    && loginResponse.body().getStatus().equals("Login Successful!")){
-                url.token += loginResponse.body().getToken();
-//                url.Cookie = imageResponseResponse.headers().get("Set=Cookie");
-                isSuccess = true;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Response<SignupResponse> loginResponse = usercall.execute();
+//            if (loginResponse.isSuccessful()
+//                    && loginResponse.body().getStatus().equals("Login Successful!")){
+//                url.token += loginResponse.body().getToken();
+////                url.Cookie = imageResponseResponse.headers().get("Set=Cookie");
+//                isSuccess = true;
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         return isSuccess;
     }
 

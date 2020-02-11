@@ -2,6 +2,7 @@ package com.suman.kennelwear.api;
 
 import com.suman.kennelwear.ServerResponse.SignupResponse;
 import com.suman.kennelwear.model.User;
+import com.suman.kennelwear.model.Userlogin;
 
 import java.util.List;
 
@@ -23,14 +24,14 @@ public interface Userapi {
     @POST("users/signup")
     Call<SignupResponse> registerUser(@Body User user);
 
-    @FormUrlEncoded
-    @POST("users/login")
-    Call<SignupResponse> checklogin(@Field("username") String username, @Field("password") String password);
-
-////
+//    @FormUrlEncoded
 //    @POST("users/login")
-//    Call<SignupResponse> checklogin(@Body Userlogin userlogin);
+//    Call<SignupResponse> checklogin(@Field("username") String username, @Field("password") String password);
+
 //
+    @POST("users/login")
+    Call<SignupResponse> checklogin(@Body Userlogin userlogin);
+
 //    @Multipart
 //    @POST("upload")
 //    Call<ImageResponse> uploadImage(@Part MultipartBody.Part img);

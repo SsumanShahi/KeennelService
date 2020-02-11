@@ -1,7 +1,10 @@
 package com.suman.kennelservice;
 
+import com.suman.kennelservice.BLL.LoginBLL;
+
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.*;
 
 /**
@@ -14,4 +17,15 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+
+    //loginpass
+    @Test
+    public void loginpass()
+    {
+        LoginBLL loginBLL = new LoginBLL();
+        boolean result = loginBLL.checklogin("suman123","suman");
+        assertEquals(true,result);
+    }
 }
+
