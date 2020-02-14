@@ -23,6 +23,8 @@ import com.suman.kennelservice.Url.url;
 import com.suman.kennelservice.api.Userapi;
 import com.suman.kennelservice.model.Appointment;
 import com.suman.kennelservice.model.User;
+import com.suman.kennelservice.serverresponse.SignupResponse;
+import com.suman.kennelservice.ui.MyProfile.ProfileFragment;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -94,13 +96,14 @@ public class AppointmentActivity extends AppCompatActivity {
         Userapi userapi = url.getInstance().create(Userapi.class);
         Call<Appointment> appointmentCall = userapi.postappointment(url.token,appointment);
 
-        appointmentCall.enqueue(new Callback<Appointment>() {
-            @Override
-            public void onResponse(Call<Appointment> call, Response<Appointment> response) {
-                if(!response.isSuccessful()){
-                    Toast.makeText(AppointmentActivity.this, "Code"+response.code(), Toast.LENGTH_LONG).show();
-                    return;
-                }
+        try {
+            Response<Appointment> register = appointmentCall.execute();
+            if(register.isSuccessful() && register.body().getClass().equals("Appointment Success!"))
+            {
+
+            }
+            else
+            {
                 Notification notification = new NotificationCompat.Builder(AppointmentActivity.this, CreateChannel.CHANNEL_1)
                         .setSmallIcon(R.drawable.not)
                         .setContentTitle("Appointment")
@@ -108,16 +111,40 @@ public class AppointmentActivity extends AppCompatActivity {
                         .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                         .build();
                 notificationManagerCompat.notify(1,notification);
-                Toast.makeText(AppointmentActivity.this, "Appointment Successfull", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(AppointmentActivity.this, NavActivity.class));
+                Toast.makeText(AppointmentActivity.this, "Registered", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(AppointmentActivity.this, NavActivity.class);
+                startActivity(intent);
             }
 
-            @Override
-            public void onFailure(Call<Appointment> call, Throwable t) {
-                Toast.makeText(AppointmentActivity.this, "Error"+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-            }
-        });
+//        appointmentCall.enqueue(new Callback<Appointment>() {
+//            @Override
+//            public void onResponse(Call<Appointment> call, Response<Appointment> response) {
+//                if(!response.isSuccessful()){
+//                    Toast.makeText(AppointmentActivity.this, "Code"+response.code(), Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//                Notification notification = new NotificationCompat.Builder(AppointmentActivity.this, CreateChannel.CHANNEL_1)
+//                        .setSmallIcon(R.drawable.not)
+//                        .setContentTitle("Appointment")
+//                        .setContentText("Appointment successful")
+//                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+//                        .build();
+//                notificationManagerCompat.notify(1,notification);
+//                Toast.makeText(AppointmentActivity.this, "Appointment Successfull", Toast.LENGTH_LONG).show();
+//                startActivity(new Intent(AppointmentActivity.this, NavActivity.class));
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Appointment> call, Throwable t) {
+//                Toast.makeText(AppointmentActivity.this, "Error"+t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
         }
 
 

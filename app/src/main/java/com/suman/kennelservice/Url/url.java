@@ -5,7 +5,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class url {
 //        public static final String Base_Url ="http://192.168.0.109:3001/";
+
+
+    //foremulator
     public static final String Base_Url="http://10.0.2.2:3001/";
+
+    //forunittestingandapptesting
+//    public static final String Base_Url="http://192.168.0.108:3001/";
+
 //    public static final String Base_Url="http://10.1.16.205:3001/";
 //    public static final String Base_Url="http://172.100.100.5:3000/";
 

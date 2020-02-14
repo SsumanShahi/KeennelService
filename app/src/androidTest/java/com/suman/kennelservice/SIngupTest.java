@@ -47,13 +47,13 @@ public class SIngupTest {
                 .perform(typeText("Test"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.etphone))
-                .perform(typeText("984569745"));
+                .perform(typeText("9845697445"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.etemail))
-                .perform(typeText("test@gmail.com"));
+                .perform(typeText("test1@gmail.com"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.etusername))
-                .perform(typeText("test123"));
+                .perform(typeText("test12345"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.etpassword))
                 .perform(typeText("test"));
@@ -66,6 +66,45 @@ public class SIngupTest {
 
 //        onView(withId(R.id.logint))
 //                .check(ViewAssertions.matches(isDisplayed()));
+
+
+    }
+
+    @Test
+    public void signupTestfailed()
+    {
+
+        onView(withId(R.id.profileimg))
+                .perform(click());
+        onView(withId(R.id.etfname))
+                .perform(typeText("Test"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.etlname))
+                .perform(typeText("Test"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.etaddress))
+                .perform(typeText("Test"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.etphone))
+                .perform(typeText("984569745"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.etemail))
+                .perform(typeText("test1@gmail.com"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.etusername))
+                .perform(typeText("test123"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.etpassword))
+                .perform(typeText("test"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.etcmpassword))
+                .perform(typeText("test3"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.btnreg))
+                .perform(click());
+
+        onView(withId(R.id.logint))
+                .check(ViewAssertions.matches(isDisplayed()));
 
 
     }

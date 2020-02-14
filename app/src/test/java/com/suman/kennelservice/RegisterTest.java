@@ -52,4 +52,31 @@ boolean actual=false;
         assertEquals(actual,expected);
 
     }
+
+
+    @Test
+    public void signupTestfailed(){
+
+        User user = new User("testNamee","testName","test@gmail.com","98745630125","test123","test1234","test123",null);
+
+
+        Userapi userapi = url.getInstance().create(Userapi.class);
+        Call<SignupResponse> signupResponseCall = userapi.registerUser(user);
+
+        try {
+            Response<SignupResponse> register = signupResponseCall.execute();
+            if(register.isSuccessful() && register.body().getStatus().equals("Signup Success!"))
+            {
+                actual=true;
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        assertEquals(actual,expected);
+
+    }
 }
