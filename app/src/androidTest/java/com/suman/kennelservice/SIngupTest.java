@@ -35,7 +35,8 @@ public class SIngupTest {
     public void signupTest()
     {
 
-
+        onView(withId(R.id.profileimg))
+                .perform(click());
         onView(withId(R.id.etfname))
                 .perform(typeText("Test"));
         Espresso.closeSoftKeyboard();
