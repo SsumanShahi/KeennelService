@@ -98,8 +98,8 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 } else if (TextUtils.isEmpty(ettpassword.getText())) {
                     ettpassword.setError("please enter password");
-                    Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                    vibrator.vibrate(400);
+//                    Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//                    vibrator.vibrate(400);
                     ettpassword.requestFocus();
                     return;
 

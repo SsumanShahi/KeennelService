@@ -28,8 +28,9 @@ import retrofit2.Response;
 
 public class MainActivity extends WearableActivity {
 
-    private FrameLayout fr;
+
     private TextView tvusername,tvpassword;
+    private FrameLayout fr;
     private EditText etuname,etpass;
     private Button btnlogin;
 

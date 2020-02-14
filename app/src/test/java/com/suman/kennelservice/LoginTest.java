@@ -49,48 +49,8 @@ public class LoginTest {
         assertTrue(result);
     }
 
-    @Test
-    public void registerpass()
-    {
-
-        User user = new User();
-        Userapi userapi = url.getInstance().create(Userapi.class);
-        Call<SignupResponse> signupResponseCall = userapi.registerUser(user);
-        try {
-            Response<SignupResponse> register = signupResponseCall.execute();
-            if(register.isSuccessful() && register.body().getStatus().equals("Signup Success!"))
-            {
-                assertEquals(true,signupResponseCall);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
-    }
-
-    @Test
-    public void registerfail()
-    {
-
-        User user = new User("suman","shahi","nakkhu","9849532862","s@gmail.com","suman123","suman",null);
-
-        Userapi userapi = url.getInstance().create(Userapi.class);
-        Call<SignupResponse> signupResponseCall = userapi.registerUser(user);
-        try {
-            Response<SignupResponse> register = signupResponseCall.execute();
-            if(register.isSuccessful() && register.body().getStatus().equals("Signup Successs!"))
-            {
-                assertEquals(false,register);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 
 
 }
